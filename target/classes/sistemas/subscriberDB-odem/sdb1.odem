@@ -1,0 +1,1317 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE ODEM PUBLIC "-//PFSW//DTD ODEM 1.1" "http://pfsw.org/ODEM/schema/dtd/odem-1.1.dtd">
+
+<ODEM version="1">
+  <header>
+    <created-by>
+      <exporter version="1.1.1">org.pf.tools.cda.ext.export.xml.XmlFileODEMExporter</exporter>
+      <provider>Manfred Duchrow Consulting &amp; Software</provider>
+    </created-by>
+  </header>
+  <context name="sdb01">
+    <container name="C:/Users/Usuario/Documents/revista-kolbe/RevistaKolbe01.jar" classification="jar">
+      <namespace name="bd">
+        <type name="bd.HSQLServer" classification="class" visibility="public">
+          <dependencies count="4">
+            <depends-on name="java.lang.Object" classification="extends" />
+            <depends-on name="org.hsqldb.server.Server" classification="uses" />
+            <depends-on name="java.io.PrintWriter" classification="uses" />
+            <depends-on name="java.lang.String" classification="uses" />
+          </dependencies>
+        </type>
+        <type name="bd.DataBaseManager" classification="class" visibility="public">
+          <dependencies count="22">
+            <depends-on name="java.lang.Object" classification="extends" />
+            <depends-on name="java.util.List" classification="uses" />
+            <depends-on name="bd.pojos.Event" classification="uses" />
+            <depends-on name="bd.pojos.Label" classification="uses" />
+            <depends-on name="java.util.Vector" classification="uses" />
+            <depends-on name="org.hibernate.criterion.Criterion" classification="uses" />
+            <depends-on name="bd.pojos.Person" classification="uses" />
+            <depends-on name="org.hibernate.Session" classification="uses" />
+            <depends-on name="org.hibernate.Criteria" classification="uses" />
+            <depends-on name="java.util.Iterator" classification="uses" />
+            <depends-on name="java.lang.Class" classification="uses" />
+            <depends-on name="org.hibernate.Transaction" classification="uses" />
+            <depends-on name="org.hibernate.HibernateException" classification="uses" />
+            <depends-on name="bd.pojos.EventInstance" classification="uses" />
+            <depends-on name="bd.HSQLServer" classification="uses" />
+            <depends-on name="bd.HibernateUtil" classification="uses" />
+            <depends-on name="org.hibernate.SessionFactory" classification="uses" />
+            <depends-on name="java.io.Serializable" classification="uses" />
+            <depends-on name="java.sql.Connection" classification="uses" />
+            <depends-on name="java.lang.Throwable" classification="uses" />
+            <depends-on name="java.lang.String" classification="uses" />
+            <depends-on name="org.hibernate.criterion.Restrictions" classification="uses" />
+          </dependencies>
+        </type>
+        <type name="bd.HibernateUtil" classification="class" visibility="public">
+          <dependencies count="9">
+            <depends-on name="java.lang.Object" classification="extends" />
+            <depends-on name="org.hibernate.SessionFactory" classification="uses" />
+            <depends-on name="java.lang.Throwable" classification="uses" />
+            <depends-on name="org.hibernate.cfg.Configuration" classification="uses" />
+            <depends-on name="java.lang.System" classification="uses" />
+            <depends-on name="java.io.PrintStream" classification="uses" />
+            <depends-on name="java.lang.StringBuilder" classification="uses" />
+            <depends-on name="java.lang.String" classification="uses" />
+            <depends-on name="java.lang.ExceptionInInitializerError" classification="uses" />
+          </dependencies>
+        </type>
+      </namespace>
+      <namespace name="bd.pojos">
+        <type name="bd.pojos.Event" classification="class" visibility="public">
+          <dependencies count="2">
+            <depends-on name="java.lang.Object" classification="extends" />
+            <depends-on name="java.lang.String" classification="uses" />
+          </dependencies>
+        </type>
+        <type name="bd.pojos.AssociatedField" classification="class" visibility="public">
+          <dependencies count="3">
+            <depends-on name="java.lang.Object" classification="extends" />
+            <depends-on name="java.lang.String" classification="uses" />
+            <depends-on name="java.lang.Long" classification="uses" />
+          </dependencies>
+        </type>
+        <type name="bd.pojos.Label" classification="class" visibility="public">
+          <dependencies count="4">
+            <depends-on name="java.lang.Object" classification="extends" />
+            <depends-on name="java.lang.String" classification="uses" />
+            <depends-on name="java.util.Set" classification="uses" />
+            <depends-on name="bd.pojos.AssociatedField" classification="uses" />
+          </dependencies>
+        </type>
+        <type name="bd.pojos.Person" classification="class" visibility="public">
+          <dependencies count="11">
+            <depends-on name="java.lang.Object" classification="extends" />
+            <depends-on name="java.lang.Long" classification="uses" />
+            <depends-on name="java.lang.String" classification="uses" />
+            <depends-on name="java.util.Date" classification="uses" />
+            <depends-on name="java.util.Set" classification="uses" />
+            <depends-on name="bd.pojos.Label" classification="uses" />
+            <depends-on name="bd.pojos.AssociatedFieldValueForLabel" classification="uses" />
+            <depends-on name="bd.pojos.EventInstance" classification="uses" />
+            <depends-on name="bd.pojos.AssociatedField" classification="uses" />
+            <depends-on name="java.util.Iterator" classification="uses" />
+            <depends-on name="bd.pojos.Event" classification="uses" />
+          </dependencies>
+        </type>
+        <type name="bd.pojos.Donation" classification="class" visibility="public">
+          <dependencies count="6">
+            <depends-on name="java.lang.Object" classification="extends" />
+            <depends-on name="java.lang.Long" classification="uses" />
+            <depends-on name="java.util.Date" classification="uses" />
+            <depends-on name="java.lang.String" classification="uses" />
+            <depends-on name="java.lang.Float" classification="uses" />
+            <depends-on name="bd.pojos.Person" classification="uses" />
+          </dependencies>
+        </type>
+        <type name="bd.pojos.EventInstance" classification="class" visibility="public">
+          <dependencies count="6">
+            <depends-on name="java.lang.Object" classification="extends" />
+            <depends-on name="java.util.Date" classification="uses" />
+            <depends-on name="bd.pojos.Event" classification="uses" />
+            <depends-on name="java.lang.String" classification="uses" />
+            <depends-on name="java.text.SimpleDateFormat" classification="uses" />
+            <depends-on name="java.lang.StringBuilder" classification="uses" />
+          </dependencies>
+        </type>
+        <type name="bd.pojos.AssociatedFieldValueForLabel" classification="class" visibility="public">
+          <dependencies count="5">
+            <depends-on name="java.lang.Object" classification="extends" />
+            <depends-on name="java.lang.Long" classification="uses" />
+            <depends-on name="bd.pojos.Label" classification="uses" />
+            <depends-on name="bd.pojos.AssociatedField" classification="uses" />
+            <depends-on name="java.lang.String" classification="uses" />
+          </dependencies>
+        </type>
+      </namespace>
+      <namespace name="bd.specialCriterions">
+        <type name="bd.specialCriterions.DayMonthAndYearEqExpression" classification="class" visibility="public">
+          <dependencies count="12">
+            <depends-on name="java.lang.Object" classification="extends" />
+            <depends-on name="org.hibernate.criterion.Criterion" classification="uses" />
+            <depends-on name="java.lang.String" classification="uses" />
+            <depends-on name="org.hibernate.Criteria" classification="uses" />
+            <depends-on name="org.hibernate.criterion.CriteriaQuery" classification="uses" />
+            <depends-on name="org.hibernate.engine.spi.TypedValue" classification="uses" />
+            <depends-on name="org.hibernate.HibernateException" classification="uses" />
+            <depends-on name="org.hibernate.type.IntegerType" classification="uses" />
+            <depends-on name="java.lang.Integer" classification="uses" />
+            <depends-on name="org.hibernate.EntityMode" classification="uses" />
+            <depends-on name="org.hibernate.type.Type" classification="uses" />
+            <depends-on name="java.lang.StringBuilder" classification="uses" />
+          </dependencies>
+        </type>
+        <type name="bd.specialCriterions.DayAndMonthEqExpression" classification="class" visibility="public">
+          <dependencies count="12">
+            <depends-on name="java.lang.Object" classification="extends" />
+            <depends-on name="org.hibernate.criterion.Criterion" classification="uses" />
+            <depends-on name="java.lang.String" classification="uses" />
+            <depends-on name="org.hibernate.Criteria" classification="uses" />
+            <depends-on name="org.hibernate.criterion.CriteriaQuery" classification="uses" />
+            <depends-on name="org.hibernate.engine.spi.TypedValue" classification="uses" />
+            <depends-on name="org.hibernate.HibernateException" classification="uses" />
+            <depends-on name="org.hibernate.type.IntegerType" classification="uses" />
+            <depends-on name="java.lang.Integer" classification="uses" />
+            <depends-on name="org.hibernate.EntityMode" classification="uses" />
+            <depends-on name="org.hibernate.type.Type" classification="uses" />
+            <depends-on name="java.lang.StringBuilder" classification="uses" />
+          </dependencies>
+        </type>
+        <type name="bd.specialCriterions.MonthEqExpression" classification="class" visibility="public">
+          <dependencies count="12">
+            <depends-on name="java.lang.Object" classification="extends" />
+            <depends-on name="org.hibernate.criterion.Criterion" classification="uses" />
+            <depends-on name="java.lang.String" classification="uses" />
+            <depends-on name="org.hibernate.Criteria" classification="uses" />
+            <depends-on name="org.hibernate.criterion.CriteriaQuery" classification="uses" />
+            <depends-on name="org.hibernate.engine.spi.TypedValue" classification="uses" />
+            <depends-on name="org.hibernate.HibernateException" classification="uses" />
+            <depends-on name="org.hibernate.type.IntegerType" classification="uses" />
+            <depends-on name="java.lang.Integer" classification="uses" />
+            <depends-on name="org.hibernate.EntityMode" classification="uses" />
+            <depends-on name="org.hibernate.type.Type" classification="uses" />
+            <depends-on name="java.lang.StringBuilder" classification="uses" />
+          </dependencies>
+        </type>
+      </namespace>
+      <namespace name="ui">
+        <type name="ui.MainWindowKolbe$1" classification="class" visibility="default">
+          <dependencies count="6">
+            <depends-on name="java.lang.Object" classification="extends" />
+            <depends-on name="java.lang.Runnable" classification="uses" />
+            <depends-on name="ui.MainWindowKolbe" classification="uses" />
+            <depends-on name="java.lang.Exception" classification="uses" />
+            <depends-on name="javax.swing.JFrame" classification="uses" />
+            <depends-on name="java.lang.String" classification="uses" />
+          </dependencies>
+        </type>
+        <type name="ui.MainWindowKolbe$2" classification="class" visibility="default">
+          <dependencies count="4">
+            <depends-on name="java.awt.event.WindowAdapter" classification="extends" />
+            <depends-on name="ui.MainWindowKolbe" classification="uses" />
+            <depends-on name="java.awt.event.WindowEvent" classification="uses" />
+            <depends-on name="bd.HSQLServer" classification="uses" />
+          </dependencies>
+        </type>
+        <type name="ui.MainWindowKolbe$3" classification="class" visibility="default">
+          <dependencies count="4">
+            <depends-on name="java.lang.Object" classification="extends" />
+            <depends-on name="java.awt.event.ActionListener" classification="uses" />
+            <depends-on name="ui.MainWindowKolbe" classification="uses" />
+            <depends-on name="java.awt.event.ActionEvent" classification="uses" />
+          </dependencies>
+        </type>
+        <type name="ui.MainWindowKolbe$4" classification="class" visibility="default">
+          <dependencies count="5">
+            <depends-on name="java.lang.Object" classification="extends" />
+            <depends-on name="java.awt.event.ActionListener" classification="uses" />
+            <depends-on name="ui.MainWindowKolbe" classification="uses" />
+            <depends-on name="java.awt.event.ActionEvent" classification="uses" />
+            <depends-on name="ui.add.AddLabel" classification="uses" />
+          </dependencies>
+        </type>
+        <type name="ui.MainWindowKolbe$5" classification="class" visibility="default">
+          <dependencies count="5">
+            <depends-on name="java.lang.Object" classification="extends" />
+            <depends-on name="java.awt.event.ActionListener" classification="uses" />
+            <depends-on name="ui.MainWindowKolbe" classification="uses" />
+            <depends-on name="java.awt.event.ActionEvent" classification="uses" />
+            <depends-on name="ui.add.AddEvent" classification="uses" />
+          </dependencies>
+        </type>
+        <type name="ui.MainWindowKolbe$6" classification="class" visibility="default">
+          <dependencies count="5">
+            <depends-on name="java.lang.Object" classification="extends" />
+            <depends-on name="java.awt.event.ActionListener" classification="uses" />
+            <depends-on name="ui.MainWindowKolbe" classification="uses" />
+            <depends-on name="java.awt.event.ActionEvent" classification="uses" />
+            <depends-on name="ui.search.SearchPerson" classification="uses" />
+          </dependencies>
+        </type>
+        <type name="ui.MainWindowKolbe" classification="class" visibility="public">
+          <dependencies count="17">
+            <depends-on name="java.lang.Object" classification="extends" />
+            <depends-on name="javax.swing.JFrame" classification="uses" />
+            <depends-on name="java.lang.String" classification="uses" />
+            <depends-on name="javax.swing.JMenuBar" classification="uses" />
+            <depends-on name="javax.swing.JMenu" classification="uses" />
+            <depends-on name="javax.swing.JMenuItem" classification="uses" />
+            <depends-on name="ui.MainWindowKolbe$1" classification="uses" />
+            <depends-on name="java.awt.EventQueue" classification="uses" />
+            <depends-on name="java.lang.Runnable" classification="uses" />
+            <depends-on name="ui.MainWindowKolbe$2" classification="uses" />
+            <depends-on name="java.awt.event.WindowListener" classification="uses" />
+            <depends-on name="ui.MainWindowKolbe$3" classification="uses" />
+            <depends-on name="java.awt.event.ActionListener" classification="uses" />
+            <depends-on name="ui.MainWindowKolbe$4" classification="uses" />
+            <depends-on name="ui.MainWindowKolbe$5" classification="uses" />
+            <depends-on name="ui.MainWindowKolbe$6" classification="uses" />
+            <depends-on name="ui.add.AddPersonFrame" classification="uses" />
+          </dependencies>
+        </type>
+      </namespace>
+      <namespace name="ui.add">
+        <type name="ui.add.EditLabel$1" classification="class" visibility="default">
+          <dependencies count="5">
+            <depends-on name="java.lang.Object" classification="extends" />
+            <depends-on name="java.awt.event.ActionListener" classification="uses" />
+            <depends-on name="ui.add.EditLabel" classification="uses" />
+            <depends-on name="java.awt.event.ActionEvent" classification="uses" />
+            <depends-on name="bd.pojos.Person" classification="uses" />
+          </dependencies>
+        </type>
+        <type name="ui.add.EditLabel$2" classification="class" visibility="default">
+          <dependencies count="5">
+            <depends-on name="java.lang.Object" classification="extends" />
+            <depends-on name="java.awt.event.ActionListener" classification="uses" />
+            <depends-on name="ui.add.EditLabel" classification="uses" />
+            <depends-on name="java.awt.event.ActionEvent" classification="uses" />
+            <depends-on name="bd.pojos.Person" classification="uses" />
+          </dependencies>
+        </type>
+        <type name="ui.add.EditLabel$3" classification="class" visibility="default">
+          <dependencies count="4">
+            <depends-on name="java.awt.event.MouseAdapter" classification="extends" />
+            <depends-on name="ui.add.EditLabel" classification="uses" />
+            <depends-on name="java.awt.event.MouseEvent" classification="uses" />
+            <depends-on name="bd.pojos.Person" classification="uses" />
+          </dependencies>
+        </type>
+        <type name="ui.add.EditLabel$4" classification="class" visibility="default">
+          <dependencies count="4">
+            <depends-on name="java.awt.event.MouseAdapter" classification="extends" />
+            <depends-on name="ui.add.EditLabel" classification="uses" />
+            <depends-on name="java.awt.event.MouseEvent" classification="uses" />
+            <depends-on name="bd.pojos.Person" classification="uses" />
+          </dependencies>
+        </type>
+        <type name="ui.add.EditLabel$5" classification="class" visibility="default">
+          <dependencies count="4">
+            <depends-on name="java.awt.event.MouseAdapter" classification="extends" />
+            <depends-on name="ui.add.EditLabel" classification="uses" />
+            <depends-on name="java.awt.event.MouseEvent" classification="uses" />
+            <depends-on name="bd.pojos.Person" classification="uses" />
+          </dependencies>
+        </type>
+        <type name="ui.add.EditLabel$6" classification="class" visibility="default">
+          <dependencies count="4">
+            <depends-on name="java.awt.event.MouseAdapter" classification="extends" />
+            <depends-on name="ui.add.EditLabel" classification="uses" />
+            <depends-on name="java.awt.event.MouseEvent" classification="uses" />
+            <depends-on name="bd.pojos.Person" classification="uses" />
+          </dependencies>
+        </type>
+        <type name="ui.add.EditLabel" classification="class" visibility="public">
+          <dependencies count="50">
+            <depends-on name="javax.swing.JDialog" classification="extends" />
+            <depends-on name="javax.swing.JPanel" classification="uses" />
+            <depends-on name="javax.swing.JTable" classification="uses" />
+            <depends-on name="java.lang.String" classification="uses" />
+            <depends-on name="javax.swing.JComboBox" classification="uses" />
+            <depends-on name="java.util.List" classification="uses" />
+            <depends-on name="bd.pojos.Label" classification="uses" />
+            <depends-on name="javax.swing.JButton" classification="uses" />
+            <depends-on name="javax.swing.JScrollPane" classification="uses" />
+            <depends-on name="java.util.Vector" classification="uses" />
+            <depends-on name="javax.swing.JTextField" classification="uses" />
+            <depends-on name="bd.pojos.Person" classification="uses" />
+            <depends-on name="javax.swing.JLabel" classification="uses" />
+            <depends-on name="javax.swing.GroupLayout" classification="uses" />
+            <depends-on name="javax.swing.table.TableModel" classification="uses" />
+            <depends-on name="java.util.HashSet" classification="uses" />
+            <depends-on name="java.util.Iterator" classification="uses" />
+            <depends-on name="bd.pojos.AssociatedField" classification="uses" />
+            <depends-on name="bd.pojos.AssociatedFieldValueForLabel" classification="uses" />
+            <depends-on name="javax.swing.ComboBoxModel" classification="uses" />
+            <depends-on name="java.awt.Container" classification="uses" />
+            <depends-on name="java.awt.BorderLayout" classification="uses" />
+            <depends-on name="java.awt.LayoutManager" classification="uses" />
+            <depends-on name="javax.swing.border.EmptyBorder" classification="uses" />
+            <depends-on name="javax.swing.border.Border" classification="uses" />
+            <depends-on name="java.awt.Component" classification="uses" />
+            <depends-on name="java.lang.Object" classification="uses" />
+            <depends-on name="ui.add.EditLabel$1" classification="uses" />
+            <depends-on name="java.awt.event.ActionListener" classification="uses" />
+            <depends-on name="ui.add.EditLabel$2" classification="uses" />
+            <depends-on name="ui.add.EditLabel$3" classification="uses" />
+            <depends-on name="java.awt.event.MouseListener" classification="uses" />
+            <depends-on name="javax.swing.GroupLayout$Alignment" classification="uses" />
+            <depends-on name="javax.swing.GroupLayout$ParallelGroup" classification="uses" />
+            <depends-on name="javax.swing.GroupLayout$SequentialGroup" classification="uses" />
+            <depends-on name="javax.swing.LayoutStyle$ComponentPlacement" classification="uses" />
+            <depends-on name="javax.swing.GroupLayout$Group" classification="uses" />
+            <depends-on name="javax.swing.table.DefaultTableModel" classification="uses" />
+            <depends-on name="ui.add.EditLabel$4" classification="uses" />
+            <depends-on name="java.awt.FlowLayout" classification="uses" />
+            <depends-on name="ui.add.EditLabel$5" classification="uses" />
+            <depends-on name="javax.swing.JRootPane" classification="uses" />
+            <depends-on name="ui.add.EditLabel$6" classification="uses" />
+            <depends-on name="java.util.Set" classification="uses" />
+            <depends-on name="java.awt.Dimension" classification="uses" />
+            <depends-on name="bd.DataBaseManager" classification="uses" />
+            <depends-on name="javax.swing.DefaultComboBoxModel" classification="uses" />
+            <depends-on name="java.lang.StringBuilder" classification="uses" />
+            <depends-on name="javax.swing.table.JTableHeader" classification="uses" />
+            <depends-on name="javax.swing.LayoutStyle" classification="uses" />
+          </dependencies>
+        </type>
+        <type name="ui.add.AddPersonFrame$1" classification="class" visibility="default">
+          <dependencies count="5">
+            <depends-on name="java.lang.Object" classification="extends" />
+            <depends-on name="java.lang.Runnable" classification="uses" />
+            <depends-on name="java.lang.Exception" classification="uses" />
+            <depends-on name="ui.add.AddPersonFrame" classification="uses" />
+            <depends-on name="java.lang.String" classification="uses" />
+          </dependencies>
+        </type>
+        <type name="ui.add.AddPersonFrame$2" classification="class" visibility="default">
+          <dependencies count="5">
+            <depends-on name="java.lang.Object" classification="extends" />
+            <depends-on name="java.awt.event.ActionListener" classification="uses" />
+            <depends-on name="ui.add.AddPersonFrame" classification="uses" />
+            <depends-on name="java.awt.event.ActionEvent" classification="uses" />
+            <depends-on name="javax.swing.JCheckBox" classification="uses" />
+          </dependencies>
+        </type>
+        <type name="ui.add.AddPersonFrame$3" classification="class" visibility="default">
+          <dependencies count="3">
+            <depends-on name="java.awt.event.MouseAdapter" classification="extends" />
+            <depends-on name="ui.add.AddPersonFrame" classification="uses" />
+            <depends-on name="java.awt.event.MouseEvent" classification="uses" />
+          </dependencies>
+        </type>
+        <type name="ui.add.AddPersonFrame$4" classification="class" visibility="default">
+          <dependencies count="3">
+            <depends-on name="java.awt.event.MouseAdapter" classification="extends" />
+            <depends-on name="ui.add.AddPersonFrame" classification="uses" />
+            <depends-on name="java.awt.event.MouseEvent" classification="uses" />
+          </dependencies>
+        </type>
+        <type name="ui.add.AddPersonFrame$5" classification="class" visibility="default">
+          <dependencies count="3">
+            <depends-on name="java.awt.event.MouseAdapter" classification="extends" />
+            <depends-on name="ui.add.AddPersonFrame" classification="uses" />
+            <depends-on name="java.awt.event.MouseEvent" classification="uses" />
+          </dependencies>
+        </type>
+        <type name="ui.add.AddPersonFrame" classification="class" visibility="public">
+          <dependencies count="44">
+            <depends-on name="javax.swing.JFrame" classification="extends" />
+            <depends-on name="javax.swing.JPanel" classification="uses" />
+            <depends-on name="javax.swing.JTextField" classification="uses" />
+            <depends-on name="javax.swing.JCheckBox" classification="uses" />
+            <depends-on name="javax.swing.JLabel" classification="uses" />
+            <depends-on name="javax.swing.JComboBox" classification="uses" />
+            <depends-on name="bd.pojos.Person" classification="uses" />
+            <depends-on name="javax.swing.JTextArea" classification="uses" />
+            <depends-on name="java.lang.String" classification="uses" />
+            <depends-on name="javax.swing.ComboBoxModel" classification="uses" />
+            <depends-on name="javax.swing.JSeparator" classification="uses" />
+            <depends-on name="javax.swing.JScrollPane" classification="uses" />
+            <depends-on name="javax.swing.JButton" classification="uses" />
+            <depends-on name="javax.swing.GroupLayout" classification="uses" />
+            <depends-on name="java.text.SimpleDateFormat" classification="uses" />
+            <depends-on name="java.lang.Exception" classification="uses" />
+            <depends-on name="java.text.ParseException" classification="uses" />
+            <depends-on name="ui.add.AddPersonFrame$1" classification="uses" />
+            <depends-on name="java.awt.EventQueue" classification="uses" />
+            <depends-on name="java.lang.Runnable" classification="uses" />
+            <depends-on name="javax.swing.border.EmptyBorder" classification="uses" />
+            <depends-on name="javax.swing.border.Border" classification="uses" />
+            <depends-on name="java.awt.Container" classification="uses" />
+            <depends-on name="javax.swing.DefaultComboBoxModel" classification="uses" />
+            <depends-on name="java.lang.Object" classification="uses" />
+            <depends-on name="java.awt.Font" classification="uses" />
+            <depends-on name="ui.add.AddPersonFrame$2" classification="uses" />
+            <depends-on name="java.awt.event.ActionListener" classification="uses" />
+            <depends-on name="ui.add.AddPersonFrame$3" classification="uses" />
+            <depends-on name="java.awt.event.MouseListener" classification="uses" />
+            <depends-on name="ui.add.AddPersonFrame$4" classification="uses" />
+            <depends-on name="ui.add.AddPersonFrame$5" classification="uses" />
+            <depends-on name="javax.swing.GroupLayout$Alignment" classification="uses" />
+            <depends-on name="javax.swing.GroupLayout$ParallelGroup" classification="uses" />
+            <depends-on name="javax.swing.GroupLayout$SequentialGroup" classification="uses" />
+            <depends-on name="java.awt.Component" classification="uses" />
+            <depends-on name="javax.swing.LayoutStyle$ComponentPlacement" classification="uses" />
+            <depends-on name="javax.swing.GroupLayout$Group" classification="uses" />
+            <depends-on name="java.awt.LayoutManager" classification="uses" />
+            <depends-on name="java.lang.StringBuilder" classification="uses" />
+            <depends-on name="java.util.Date" classification="uses" />
+            <depends-on name="bd.DataBaseManager" classification="uses" />
+            <depends-on name="ui.add.EditLabel" classification="uses" />
+            <depends-on name="javax.swing.LayoutStyle" classification="uses" />
+          </dependencies>
+        </type>
+        <type name="ui.add.AddEvent$1" classification="class" visibility="default">
+          <dependencies count="4">
+            <depends-on name="java.lang.Object" classification="extends" />
+            <depends-on name="java.awt.event.ActionListener" classification="uses" />
+            <depends-on name="ui.add.AddEvent" classification="uses" />
+            <depends-on name="java.awt.event.ActionEvent" classification="uses" />
+          </dependencies>
+        </type>
+        <type name="ui.add.AddEvent$2" classification="class" visibility="default">
+          <dependencies count="3">
+            <depends-on name="java.awt.event.MouseAdapter" classification="extends" />
+            <depends-on name="ui.add.AddEvent" classification="uses" />
+            <depends-on name="java.awt.event.MouseEvent" classification="uses" />
+          </dependencies>
+        </type>
+        <type name="ui.add.AddEvent$3" classification="class" visibility="default">
+          <dependencies count="3">
+            <depends-on name="java.awt.event.MouseAdapter" classification="extends" />
+            <depends-on name="ui.add.AddEvent" classification="uses" />
+            <depends-on name="java.awt.event.MouseEvent" classification="uses" />
+          </dependencies>
+        </type>
+        <type name="ui.add.AddEvent$4" classification="class" visibility="default">
+          <dependencies count="4">
+            <depends-on name="java.lang.Object" classification="extends" />
+            <depends-on name="java.awt.event.ActionListener" classification="uses" />
+            <depends-on name="ui.add.AddEvent" classification="uses" />
+            <depends-on name="java.awt.event.ActionEvent" classification="uses" />
+          </dependencies>
+        </type>
+        <type name="ui.add.AddEvent$5" classification="class" visibility="default">
+          <dependencies count="3">
+            <depends-on name="java.awt.event.MouseAdapter" classification="extends" />
+            <depends-on name="ui.add.AddEvent" classification="uses" />
+            <depends-on name="java.awt.event.MouseEvent" classification="uses" />
+          </dependencies>
+        </type>
+        <type name="ui.add.AddEvent" classification="class" visibility="public">
+          <dependencies count="40">
+            <depends-on name="javax.swing.JDialog" classification="extends" />
+            <depends-on name="javax.swing.JPanel" classification="uses" />
+            <depends-on name="javax.swing.JTextField" classification="uses" />
+            <depends-on name="javax.swing.JButton" classification="uses" />
+            <depends-on name="javax.swing.JComboBox" classification="uses" />
+            <depends-on name="java.util.List" classification="uses" />
+            <depends-on name="bd.pojos.Event" classification="uses" />
+            <depends-on name="javax.swing.JLabel" classification="uses" />
+            <depends-on name="javax.swing.GroupLayout" classification="uses" />
+            <depends-on name="bd.pojos.EventInstance" classification="uses" />
+            <depends-on name="java.text.SimpleDateFormat" classification="uses" />
+            <depends-on name="java.text.ParseException" classification="uses" />
+            <depends-on name="java.lang.String" classification="uses" />
+            <depends-on name="javax.swing.ComboBoxModel" classification="uses" />
+            <depends-on name="java.awt.Container" classification="uses" />
+            <depends-on name="java.awt.BorderLayout" classification="uses" />
+            <depends-on name="java.awt.LayoutManager" classification="uses" />
+            <depends-on name="javax.swing.border.EmptyBorder" classification="uses" />
+            <depends-on name="javax.swing.border.Border" classification="uses" />
+            <depends-on name="java.awt.Component" classification="uses" />
+            <depends-on name="java.lang.Object" classification="uses" />
+            <depends-on name="ui.add.AddEvent$1" classification="uses" />
+            <depends-on name="java.awt.event.ActionListener" classification="uses" />
+            <depends-on name="ui.add.AddEvent$2" classification="uses" />
+            <depends-on name="java.awt.event.MouseListener" classification="uses" />
+            <depends-on name="javax.swing.GroupLayout$Alignment" classification="uses" />
+            <depends-on name="javax.swing.GroupLayout$ParallelGroup" classification="uses" />
+            <depends-on name="javax.swing.GroupLayout$SequentialGroup" classification="uses" />
+            <depends-on name="javax.swing.LayoutStyle$ComponentPlacement" classification="uses" />
+            <depends-on name="javax.swing.GroupLayout$Group" classification="uses" />
+            <depends-on name="java.awt.FlowLayout" classification="uses" />
+            <depends-on name="ui.add.AddEvent$3" classification="uses" />
+            <depends-on name="ui.add.AddEvent$4" classification="uses" />
+            <depends-on name="javax.swing.JRootPane" classification="uses" />
+            <depends-on name="ui.add.AddEvent$5" classification="uses" />
+            <depends-on name="java.lang.StringBuilder" classification="uses" />
+            <depends-on name="java.util.Date" classification="uses" />
+            <depends-on name="bd.DataBaseManager" classification="uses" />
+            <depends-on name="javax.swing.DefaultComboBoxModel" classification="uses" />
+            <depends-on name="javax.swing.LayoutStyle" classification="uses" />
+          </dependencies>
+        </type>
+        <type name="ui.add.AddLabel$1" classification="class" visibility="default">
+          <dependencies count="3">
+            <depends-on name="java.awt.event.MouseAdapter" classification="extends" />
+            <depends-on name="ui.add.AddLabel" classification="uses" />
+            <depends-on name="java.awt.event.MouseEvent" classification="uses" />
+          </dependencies>
+        </type>
+        <type name="ui.add.AddLabel$2" classification="class" visibility="default">
+          <dependencies count="3">
+            <depends-on name="java.awt.event.MouseAdapter" classification="extends" />
+            <depends-on name="ui.add.AddLabel" classification="uses" />
+            <depends-on name="java.awt.event.MouseEvent" classification="uses" />
+          </dependencies>
+        </type>
+        <type name="ui.add.AddLabel$3" classification="class" visibility="default">
+          <dependencies count="3">
+            <depends-on name="java.awt.event.MouseAdapter" classification="extends" />
+            <depends-on name="ui.add.AddLabel" classification="uses" />
+            <depends-on name="java.awt.event.MouseEvent" classification="uses" />
+          </dependencies>
+        </type>
+        <type name="ui.add.AddLabel$4" classification="class" visibility="default">
+          <dependencies count="4">
+            <depends-on name="java.lang.Object" classification="extends" />
+            <depends-on name="java.awt.event.ActionListener" classification="uses" />
+            <depends-on name="ui.add.AddLabel" classification="uses" />
+            <depends-on name="java.awt.event.ActionEvent" classification="uses" />
+          </dependencies>
+        </type>
+        <type name="ui.add.AddLabel$5" classification="class" visibility="default">
+          <dependencies count="4">
+            <depends-on name="java.lang.Object" classification="extends" />
+            <depends-on name="java.awt.event.ActionListener" classification="uses" />
+            <depends-on name="ui.add.AddLabel" classification="uses" />
+            <depends-on name="java.awt.event.ActionEvent" classification="uses" />
+          </dependencies>
+        </type>
+        <type name="ui.add.AddLabel" classification="class" visibility="public">
+          <dependencies count="43">
+            <depends-on name="javax.swing.JDialog" classification="extends" />
+            <depends-on name="javax.swing.JPanel" classification="uses" />
+            <depends-on name="javax.swing.JTextField" classification="uses" />
+            <depends-on name="javax.swing.JTable" classification="uses" />
+            <depends-on name="java.lang.String" classification="uses" />
+            <depends-on name="javax.swing.JButton" classification="uses" />
+            <depends-on name="javax.swing.JComboBox" classification="uses" />
+            <depends-on name="java.util.Vector" classification="uses" />
+            <depends-on name="javax.swing.JLabel" classification="uses" />
+            <depends-on name="javax.swing.JScrollPane" classification="uses" />
+            <depends-on name="javax.swing.ComboBoxModel" classification="uses" />
+            <depends-on name="javax.swing.GroupLayout" classification="uses" />
+            <depends-on name="javax.swing.table.TableModel" classification="uses" />
+            <depends-on name="bd.pojos.Label" classification="uses" />
+            <depends-on name="java.util.Set" classification="uses" />
+            <depends-on name="bd.pojos.AssociatedField" classification="uses" />
+            <depends-on name="java.awt.Container" classification="uses" />
+            <depends-on name="java.awt.BorderLayout" classification="uses" />
+            <depends-on name="java.awt.LayoutManager" classification="uses" />
+            <depends-on name="javax.swing.border.EmptyBorder" classification="uses" />
+            <depends-on name="javax.swing.border.Border" classification="uses" />
+            <depends-on name="java.awt.Component" classification="uses" />
+            <depends-on name="java.lang.Object" classification="uses" />
+            <depends-on name="ui.add.AddLabel$1" classification="uses" />
+            <depends-on name="java.awt.event.MouseListener" classification="uses" />
+            <depends-on name="ui.add.AddLabel$2" classification="uses" />
+            <depends-on name="javax.swing.DefaultComboBoxModel" classification="uses" />
+            <depends-on name="javax.swing.GroupLayout$Alignment" classification="uses" />
+            <depends-on name="javax.swing.GroupLayout$ParallelGroup" classification="uses" />
+            <depends-on name="javax.swing.GroupLayout$SequentialGroup" classification="uses" />
+            <depends-on name="javax.swing.LayoutStyle$ComponentPlacement" classification="uses" />
+            <depends-on name="javax.swing.GroupLayout$Group" classification="uses" />
+            <depends-on name="javax.swing.table.DefaultTableModel" classification="uses" />
+            <depends-on name="ui.add.AddLabel$3" classification="uses" />
+            <depends-on name="java.awt.FlowLayout" classification="uses" />
+            <depends-on name="ui.add.AddLabel$4" classification="uses" />
+            <depends-on name="java.awt.event.ActionListener" classification="uses" />
+            <depends-on name="javax.swing.JRootPane" classification="uses" />
+            <depends-on name="ui.add.AddLabel$5" classification="uses" />
+            <depends-on name="javax.swing.table.JTableHeader" classification="uses" />
+            <depends-on name="java.util.HashSet" classification="uses" />
+            <depends-on name="bd.DataBaseManager" classification="uses" />
+            <depends-on name="javax.swing.LayoutStyle" classification="uses" />
+          </dependencies>
+        </type>
+      </namespace>
+      <namespace name="ui.search">
+        <type name="ui.search.Searchresults$1" classification="class" visibility="default">
+          <dependencies count="5">
+            <depends-on name="java.lang.Object" classification="extends" />
+            <depends-on name="java.awt.event.ActionListener" classification="uses" />
+            <depends-on name="ui.search.Searchresults" classification="uses" />
+            <depends-on name="java.awt.event.ActionEvent" classification="uses" />
+            <depends-on name="java.util.List" classification="uses" />
+          </dependencies>
+        </type>
+        <type name="ui.search.Searchresults$2" classification="class" visibility="default">
+          <dependencies count="5">
+            <depends-on name="java.lang.Object" classification="extends" />
+            <depends-on name="java.awt.event.ActionListener" classification="uses" />
+            <depends-on name="ui.search.Searchresults" classification="uses" />
+            <depends-on name="java.awt.event.ActionEvent" classification="uses" />
+            <depends-on name="java.util.List" classification="uses" />
+          </dependencies>
+        </type>
+        <type name="ui.search.Searchresults$3" classification="class" visibility="default">
+          <dependencies count="5">
+            <depends-on name="java.lang.Object" classification="extends" />
+            <depends-on name="java.awt.event.ActionListener" classification="uses" />
+            <depends-on name="ui.search.Searchresults" classification="uses" />
+            <depends-on name="java.awt.event.ActionEvent" classification="uses" />
+            <depends-on name="java.util.List" classification="uses" />
+          </dependencies>
+        </type>
+        <type name="ui.search.Searchresults$4" classification="class" visibility="default">
+          <dependencies count="5">
+            <depends-on name="java.lang.Object" classification="extends" />
+            <depends-on name="java.awt.event.ActionListener" classification="uses" />
+            <depends-on name="ui.search.Searchresults" classification="uses" />
+            <depends-on name="java.awt.event.ActionEvent" classification="uses" />
+            <depends-on name="java.util.List" classification="uses" />
+          </dependencies>
+        </type>
+        <type name="ui.search.Searchresults$5" classification="class" visibility="default">
+          <dependencies count="6">
+            <depends-on name="java.awt.event.MouseAdapter" classification="extends" />
+            <depends-on name="ui.search.Searchresults" classification="uses" />
+            <depends-on name="java.awt.event.MouseEvent" classification="uses" />
+            <depends-on name="javax.swing.JPopupMenu" classification="uses" />
+            <depends-on name="java.awt.Component" classification="uses" />
+            <depends-on name="java.util.List" classification="uses" />
+          </dependencies>
+        </type>
+        <type name="ui.search.Searchresults" classification="class" visibility="public">
+          <dependencies count="27">
+            <depends-on name="javax.swing.JFrame" classification="extends" />
+            <depends-on name="javax.swing.JPanel" classification="uses" />
+            <depends-on name="javax.swing.JTable" classification="uses" />
+            <depends-on name="java.lang.String" classification="uses" />
+            <depends-on name="javax.swing.JPopupMenu" classification="uses" />
+            <depends-on name="java.util.List" classification="uses" />
+            <depends-on name="bd.pojos.Person" classification="uses" />
+            <depends-on name="javax.swing.JScrollPane" classification="uses" />
+            <depends-on name="javax.swing.table.TableModel" classification="uses" />
+            <depends-on name="javax.swing.JMenuItem" classification="uses" />
+            <depends-on name="javax.swing.border.EmptyBorder" classification="uses" />
+            <depends-on name="javax.swing.border.Border" classification="uses" />
+            <depends-on name="java.awt.Container" classification="uses" />
+            <depends-on name="java.awt.BorderLayout" classification="uses" />
+            <depends-on name="java.awt.LayoutManager" classification="uses" />
+            <depends-on name="java.awt.Component" classification="uses" />
+            <depends-on name="java.lang.Object" classification="uses" />
+            <depends-on name="javax.swing.table.DefaultTableModel" classification="uses" />
+            <depends-on name="ui.search.Searchresults$1" classification="uses" />
+            <depends-on name="java.awt.event.ActionListener" classification="uses" />
+            <depends-on name="ui.search.Searchresults$2" classification="uses" />
+            <depends-on name="ui.search.Searchresults$3" classification="uses" />
+            <depends-on name="ui.search.Searchresults$4" classification="uses" />
+            <depends-on name="ui.search.Searchresults$5" classification="uses" />
+            <depends-on name="java.awt.event.MouseListener" classification="uses" />
+            <depends-on name="java.lang.System" classification="uses" />
+            <depends-on name="java.io.PrintStream" classification="uses" />
+          </dependencies>
+        </type>
+        <type name="ui.search.SearchPerson$1" classification="class" visibility="default">
+          <dependencies count="4">
+            <depends-on name="java.lang.Object" classification="extends" />
+            <depends-on name="java.awt.event.ActionListener" classification="uses" />
+            <depends-on name="ui.search.SearchPerson" classification="uses" />
+            <depends-on name="java.awt.event.ActionEvent" classification="uses" />
+          </dependencies>
+        </type>
+        <type name="ui.search.SearchPerson$10" classification="class" visibility="default">
+          <dependencies count="3">
+            <depends-on name="java.awt.event.MouseAdapter" classification="extends" />
+            <depends-on name="ui.search.SearchPerson" classification="uses" />
+            <depends-on name="java.awt.event.MouseEvent" classification="uses" />
+          </dependencies>
+        </type>
+        <type name="ui.search.SearchPerson$2" classification="class" visibility="default">
+          <dependencies count="3">
+            <depends-on name="java.awt.event.MouseAdapter" classification="extends" />
+            <depends-on name="ui.search.SearchPerson" classification="uses" />
+            <depends-on name="java.awt.event.MouseEvent" classification="uses" />
+          </dependencies>
+        </type>
+        <type name="ui.search.SearchPerson$3" classification="class" visibility="default">
+          <dependencies count="4">
+            <depends-on name="java.lang.Object" classification="extends" />
+            <depends-on name="java.awt.event.ActionListener" classification="uses" />
+            <depends-on name="ui.search.SearchPerson" classification="uses" />
+            <depends-on name="java.awt.event.ActionEvent" classification="uses" />
+          </dependencies>
+        </type>
+        <type name="ui.search.SearchPerson$4" classification="class" visibility="default">
+          <dependencies count="3">
+            <depends-on name="java.awt.event.MouseAdapter" classification="extends" />
+            <depends-on name="ui.search.SearchPerson" classification="uses" />
+            <depends-on name="java.awt.event.MouseEvent" classification="uses" />
+          </dependencies>
+        </type>
+        <type name="ui.search.SearchPerson$5" classification="class" visibility="default">
+          <dependencies count="4">
+            <depends-on name="java.lang.Object" classification="extends" />
+            <depends-on name="java.awt.event.ActionListener" classification="uses" />
+            <depends-on name="ui.search.SearchPerson" classification="uses" />
+            <depends-on name="java.awt.event.ActionEvent" classification="uses" />
+          </dependencies>
+        </type>
+        <type name="ui.search.SearchPerson$6" classification="class" visibility="default">
+          <dependencies count="3">
+            <depends-on name="java.awt.event.MouseAdapter" classification="extends" />
+            <depends-on name="ui.search.SearchPerson" classification="uses" />
+            <depends-on name="java.awt.event.MouseEvent" classification="uses" />
+          </dependencies>
+        </type>
+        <type name="ui.search.SearchPerson$7" classification="class" visibility="default">
+          <dependencies count="3">
+            <depends-on name="java.awt.event.MouseAdapter" classification="extends" />
+            <depends-on name="ui.search.SearchPerson" classification="uses" />
+            <depends-on name="java.awt.event.MouseEvent" classification="uses" />
+          </dependencies>
+        </type>
+        <type name="ui.search.SearchPerson$8" classification="class" visibility="default">
+          <dependencies count="3">
+            <depends-on name="java.awt.event.MouseAdapter" classification="extends" />
+            <depends-on name="ui.search.SearchPerson" classification="uses" />
+            <depends-on name="java.awt.event.MouseEvent" classification="uses" />
+          </dependencies>
+        </type>
+        <type name="ui.search.SearchPerson$9" classification="class" visibility="default">
+          <dependencies count="3">
+            <depends-on name="java.awt.event.MouseAdapter" classification="extends" />
+            <depends-on name="ui.search.SearchPerson" classification="uses" />
+            <depends-on name="java.awt.event.MouseEvent" classification="uses" />
+          </dependencies>
+        </type>
+        <type name="ui.search.SearchPerson" classification="class" visibility="public">
+          <dependencies count="64">
+            <depends-on name="javax.swing.JDialog" classification="extends" />
+            <depends-on name="javax.swing.JPanel" classification="uses" />
+            <depends-on name="javax.swing.JTable" classification="uses" />
+            <depends-on name="java.lang.String" classification="uses" />
+            <depends-on name="java.util.Vector" classification="uses" />
+            <depends-on name="bd.pojos.Label" classification="uses" />
+            <depends-on name="bd.pojos.Event" classification="uses" />
+            <depends-on name="javax.swing.JComboBox" classification="uses" />
+            <depends-on name="javax.swing.JButton" classification="uses" />
+            <depends-on name="javax.swing.JScrollPane" classification="uses" />
+            <depends-on name="ui.search.personUtils.searchCriteria.SearchCriteria" classification="uses" />
+            <depends-on name="java.lang.Exception" classification="uses" />
+            <depends-on name="javax.swing.JLabel" classification="uses" />
+            <depends-on name="javax.swing.GroupLayout" classification="uses" />
+            <depends-on name="javax.swing.table.TableModel" classification="uses" />
+            <depends-on name="java.util.Iterator" classification="uses" />
+            <depends-on name="java.util.List" classification="uses" />
+            <depends-on name="java.awt.Component" classification="uses" />
+            <depends-on name="javax.swing.ComboBoxModel" classification="uses" />
+            <depends-on name="java.awt.Container" classification="uses" />
+            <depends-on name="java.awt.BorderLayout" classification="uses" />
+            <depends-on name="java.awt.LayoutManager" classification="uses" />
+            <depends-on name="javax.swing.border.EmptyBorder" classification="uses" />
+            <depends-on name="javax.swing.border.Border" classification="uses" />
+            <depends-on name="java.lang.Object" classification="uses" />
+            <depends-on name="ui.search.SearchPerson$1" classification="uses" />
+            <depends-on name="java.awt.event.ActionListener" classification="uses" />
+            <depends-on name="ui.search.SearchPerson$2" classification="uses" />
+            <depends-on name="java.awt.event.MouseListener" classification="uses" />
+            <depends-on name="ui.search.SearchPerson$3" classification="uses" />
+            <depends-on name="ui.search.SearchPerson$4" classification="uses" />
+            <depends-on name="ui.search.SearchPerson$5" classification="uses" />
+            <depends-on name="ui.search.SearchPerson$6" classification="uses" />
+            <depends-on name="ui.search.SearchPerson$7" classification="uses" />
+            <depends-on name="javax.swing.GroupLayout$Alignment" classification="uses" />
+            <depends-on name="javax.swing.GroupLayout$ParallelGroup" classification="uses" />
+            <depends-on name="javax.swing.GroupLayout$SequentialGroup" classification="uses" />
+            <depends-on name="javax.swing.GroupLayout$Group" classification="uses" />
+            <depends-on name="javax.swing.LayoutStyle$ComponentPlacement" classification="uses" />
+            <depends-on name="javax.swing.table.DefaultTableModel" classification="uses" />
+            <depends-on name="ui.search.SearchPerson$8" classification="uses" />
+            <depends-on name="java.awt.FlowLayout" classification="uses" />
+            <depends-on name="ui.search.SearchPerson$9" classification="uses" />
+            <depends-on name="javax.swing.JRootPane" classification="uses" />
+            <depends-on name="ui.search.SearchPerson$10" classification="uses" />
+            <depends-on name="javax.swing.JViewport" classification="uses" />
+            <depends-on name="ui.search.personUtils.panels.events.CriteriaCreationPanelForEvent" classification="uses" />
+            <depends-on name="ui.search.personUtils.searchCriteria.SearchCriteriaToQuery" classification="uses" />
+            <depends-on name="org.hibernate.criterion.Criterion" classification="uses" />
+            <depends-on name="bd.DataBaseManager" classification="uses" />
+            <depends-on name="ui.search.personUtils.searchCriteria.SearchCriteriaToFilter" classification="uses" />
+            <depends-on name="ui.search.Searchresults" classification="uses" />
+            <depends-on name="ui.search.personUtils.searchCriteria.SearchCriteriaForField" classification="uses" />
+            <depends-on name="ui.search.personUtils.searchCriteria.SearchCriteriaForLabel" classification="uses" />
+            <depends-on name="ui.search.personUtils.panels.fields.CriteriaCreationPanelForField" classification="uses" />
+            <depends-on name="ui.search.personUtils.panels.labels.CriteriaCreationPanelForLabel" classification="uses" />
+            <depends-on name="javax.swing.table.JTableHeader" classification="uses" />
+            <depends-on name="ui.search.personUtils.panels.fields.SimpleComboBoxCreationPanel" classification="uses" />
+            <depends-on name="ui.search.personUtils.panels.fields.SimpleDateCreationPanel" classification="uses" />
+            <depends-on name="ui.search.personUtils.panels.fields.SimpleFieldCreationPanel" classification="uses" />
+            <depends-on name="ui.search.personUtils.panels.fields.SimpleBooleanCreationPanel" classification="uses" />
+            <depends-on name="java.util.Collection" classification="uses" />
+            <depends-on name="javax.swing.DefaultComboBoxModel" classification="uses" />
+            <depends-on name="javax.swing.LayoutStyle" classification="uses" />
+          </dependencies>
+        </type>
+      </namespace>
+      <namespace name="ui.search.personUtils">
+        <type name="ui.search.personUtils.Prueba" classification="class" visibility="public">
+          <dependencies count="4">
+            <depends-on name="java.lang.Object" classification="extends" />
+            <depends-on name="java.lang.String" classification="uses" />
+            <depends-on name="java.lang.System" classification="uses" />
+            <depends-on name="java.io.PrintStream" classification="uses" />
+          </dependencies>
+        </type>
+      </namespace>
+      <namespace name="ui.search.personUtils.panels">
+        <type name="ui.search.personUtils.panels.CriteriaCreationPanel" classification="class" visibility="public" isAbstract="yes">
+          <dependencies count="2">
+            <depends-on name="javax.swing.JPanel" classification="extends" />
+            <depends-on name="ui.search.personUtils.searchCriteria.SearchCriteria" classification="uses" />
+          </dependencies>
+        </type>
+      </namespace>
+      <namespace name="ui.search.personUtils.panels.events">
+        <type name="ui.search.personUtils.panels.events.CriteriaCreationPanelForEvent$1" classification="class" visibility="default">
+          <dependencies count="4">
+            <depends-on name="java.awt.event.MouseAdapter" classification="extends" />
+            <depends-on name="ui.search.personUtils.panels.events.CriteriaCreationPanelForEvent" classification="uses" />
+            <depends-on name="java.awt.event.MouseEvent" classification="uses" />
+            <depends-on name="bd.pojos.Event" classification="uses" />
+          </dependencies>
+        </type>
+        <type name="ui.search.personUtils.panels.events.CriteriaCreationPanelForEvent" classification="class" visibility="public">
+          <dependencies count="31">
+            <depends-on name="ui.search.personUtils.panels.CriteriaCreationPanel" classification="extends" />
+            <depends-on name="javax.swing.JRadioButton" classification="uses" />
+            <depends-on name="bd.pojos.Event" classification="uses" />
+            <depends-on name="javax.swing.JComboBox" classification="uses" />
+            <depends-on name="javax.swing.JCheckBox" classification="uses" />
+            <depends-on name="java.util.List" classification="uses" />
+            <depends-on name="bd.pojos.EventInstance" classification="uses" />
+            <depends-on name="javax.swing.ButtonGroup" classification="uses" />
+            <depends-on name="javax.swing.GroupLayout" classification="uses" />
+            <depends-on name="java.lang.String" classification="uses" />
+            <depends-on name="java.text.SimpleDateFormat" classification="uses" />
+            <depends-on name="javax.swing.ComboBoxModel" classification="uses" />
+            <depends-on name="ui.search.personUtils.searchCriteria.SearchCriteria" classification="uses" />
+            <depends-on name="javax.swing.AbstractButton" classification="uses" />
+            <depends-on name="ui.search.personUtils.panels.events.CriteriaCreationPanelForEvent$1" classification="uses" />
+            <depends-on name="java.awt.event.MouseListener" classification="uses" />
+            <depends-on name="java.awt.Container" classification="uses" />
+            <depends-on name="javax.swing.GroupLayout$Alignment" classification="uses" />
+            <depends-on name="javax.swing.GroupLayout$ParallelGroup" classification="uses" />
+            <depends-on name="javax.swing.GroupLayout$SequentialGroup" classification="uses" />
+            <depends-on name="java.awt.Component" classification="uses" />
+            <depends-on name="javax.swing.GroupLayout$Group" classification="uses" />
+            <depends-on name="javax.swing.LayoutStyle$ComponentPlacement" classification="uses" />
+            <depends-on name="java.awt.LayoutManager" classification="uses" />
+            <depends-on name="java.awt.Dimension" classification="uses" />
+            <depends-on name="bd.DataBaseManager" classification="uses" />
+            <depends-on name="java.lang.Object" classification="uses" />
+            <depends-on name="java.util.Date" classification="uses" />
+            <depends-on name="javax.swing.DefaultComboBoxModel" classification="uses" />
+            <depends-on name="ui.search.personUtils.searchCriteria.SearchCriteriaForEvent" classification="uses" />
+            <depends-on name="javax.swing.LayoutStyle" classification="uses" />
+          </dependencies>
+        </type>
+      </namespace>
+      <namespace name="ui.search.personUtils.panels.fields">
+        <type name="ui.search.personUtils.panels.fields.SimpleFieldCreationPanel" classification="class" visibility="public">
+          <dependencies count="19">
+            <depends-on name="ui.search.personUtils.panels.fields.CriteriaCreationPanelForField" classification="extends" />
+            <depends-on name="javax.swing.JTextField" classification="uses" />
+            <depends-on name="javax.swing.JRadioButton" classification="uses" />
+            <depends-on name="java.lang.String" classification="uses" />
+            <depends-on name="javax.swing.ButtonGroup" classification="uses" />
+            <depends-on name="javax.swing.GroupLayout" classification="uses" />
+            <depends-on name="ui.search.personUtils.searchCriteria.SearchCriteria" classification="uses" />
+            <depends-on name="javax.swing.AbstractButton" classification="uses" />
+            <depends-on name="java.awt.Container" classification="uses" />
+            <depends-on name="javax.swing.GroupLayout$Alignment" classification="uses" />
+            <depends-on name="javax.swing.GroupLayout$ParallelGroup" classification="uses" />
+            <depends-on name="javax.swing.GroupLayout$SequentialGroup" classification="uses" />
+            <depends-on name="java.awt.Component" classification="uses" />
+            <depends-on name="javax.swing.GroupLayout$Group" classification="uses" />
+            <depends-on name="javax.swing.LayoutStyle$ComponentPlacement" classification="uses" />
+            <depends-on name="java.awt.LayoutManager" classification="uses" />
+            <depends-on name="java.awt.Dimension" classification="uses" />
+            <depends-on name="ui.search.personUtils.searchCriteria.SearchCriteriaForSimpleField" classification="uses" />
+            <depends-on name="javax.swing.LayoutStyle" classification="uses" />
+          </dependencies>
+        </type>
+        <type name="ui.search.personUtils.panels.fields.SimpleBooleanCreationPanel" classification="class" visibility="public">
+          <dependencies count="18">
+            <depends-on name="ui.search.personUtils.panels.fields.CriteriaCreationPanelForField" classification="extends" />
+            <depends-on name="javax.swing.JRadioButton" classification="uses" />
+            <depends-on name="java.lang.String" classification="uses" />
+            <depends-on name="javax.swing.ButtonGroup" classification="uses" />
+            <depends-on name="javax.swing.GroupLayout" classification="uses" />
+            <depends-on name="ui.search.personUtils.searchCriteria.SearchCriteria" classification="uses" />
+            <depends-on name="javax.swing.AbstractButton" classification="uses" />
+            <depends-on name="java.awt.Container" classification="uses" />
+            <depends-on name="javax.swing.GroupLayout$Alignment" classification="uses" />
+            <depends-on name="javax.swing.GroupLayout$ParallelGroup" classification="uses" />
+            <depends-on name="javax.swing.GroupLayout$SequentialGroup" classification="uses" />
+            <depends-on name="java.awt.Component" classification="uses" />
+            <depends-on name="javax.swing.GroupLayout$Group" classification="uses" />
+            <depends-on name="javax.swing.LayoutStyle$ComponentPlacement" classification="uses" />
+            <depends-on name="java.awt.LayoutManager" classification="uses" />
+            <depends-on name="java.awt.Dimension" classification="uses" />
+            <depends-on name="ui.search.personUtils.searchCriteria.SearchCriteriaForBoolean" classification="uses" />
+            <depends-on name="javax.swing.LayoutStyle" classification="uses" />
+          </dependencies>
+        </type>
+        <type name="ui.search.personUtils.panels.fields.SimpleDateCreationPanel$1" classification="class" visibility="default">
+          <dependencies count="4">
+            <depends-on name="java.awt.event.MouseAdapter" classification="extends" />
+            <depends-on name="ui.search.personUtils.panels.fields.SimpleDateCreationPanel" classification="uses" />
+            <depends-on name="java.awt.event.MouseEvent" classification="uses" />
+            <depends-on name="java.lang.String" classification="uses" />
+          </dependencies>
+        </type>
+        <type name="ui.search.personUtils.panels.fields.SimpleDateCreationPanel$2" classification="class" visibility="default">
+          <dependencies count="4">
+            <depends-on name="java.awt.event.MouseAdapter" classification="extends" />
+            <depends-on name="ui.search.personUtils.panels.fields.SimpleDateCreationPanel" classification="uses" />
+            <depends-on name="java.awt.event.MouseEvent" classification="uses" />
+            <depends-on name="java.lang.String" classification="uses" />
+          </dependencies>
+        </type>
+        <type name="ui.search.personUtils.panels.fields.SimpleDateCreationPanel$3" classification="class" visibility="default">
+          <dependencies count="4">
+            <depends-on name="java.awt.event.MouseAdapter" classification="extends" />
+            <depends-on name="ui.search.personUtils.panels.fields.SimpleDateCreationPanel" classification="uses" />
+            <depends-on name="java.awt.event.MouseEvent" classification="uses" />
+            <depends-on name="java.lang.String" classification="uses" />
+          </dependencies>
+        </type>
+        <type name="ui.search.personUtils.panels.fields.SimpleDateCreationPanel" classification="class" visibility="public">
+          <dependencies count="26">
+            <depends-on name="ui.search.personUtils.panels.fields.CriteriaCreationPanelForField" classification="extends" />
+            <depends-on name="javax.swing.JTextField" classification="uses" />
+            <depends-on name="javax.swing.JRadioButton" classification="uses" />
+            <depends-on name="java.lang.String" classification="uses" />
+            <depends-on name="javax.swing.ButtonGroup" classification="uses" />
+            <depends-on name="javax.swing.JLabel" classification="uses" />
+            <depends-on name="javax.swing.GroupLayout" classification="uses" />
+            <depends-on name="ui.search.personUtils.searchCriteria.SearchCriteria" classification="uses" />
+            <depends-on name="javax.swing.AbstractButton" classification="uses" />
+            <depends-on name="ui.search.personUtils.panels.fields.SimpleDateCreationPanel$1" classification="uses" />
+            <depends-on name="java.awt.event.MouseListener" classification="uses" />
+            <depends-on name="ui.search.personUtils.panels.fields.SimpleDateCreationPanel$2" classification="uses" />
+            <depends-on name="ui.search.personUtils.panels.fields.SimpleDateCreationPanel$3" classification="uses" />
+            <depends-on name="java.awt.Container" classification="uses" />
+            <depends-on name="javax.swing.GroupLayout$Alignment" classification="uses" />
+            <depends-on name="javax.swing.GroupLayout$ParallelGroup" classification="uses" />
+            <depends-on name="javax.swing.GroupLayout$SequentialGroup" classification="uses" />
+            <depends-on name="java.awt.Component" classification="uses" />
+            <depends-on name="javax.swing.GroupLayout$Group" classification="uses" />
+            <depends-on name="javax.swing.LayoutStyle$ComponentPlacement" classification="uses" />
+            <depends-on name="java.awt.LayoutManager" classification="uses" />
+            <depends-on name="java.awt.Dimension" classification="uses" />
+            <depends-on name="ui.search.personUtils.searchCriteria.SearchCriteriaDateOnlyForMonthAndDay" classification="uses" />
+            <depends-on name="ui.search.personUtils.searchCriteria.SearchCriteriaDateOnlyForMonth" classification="uses" />
+            <depends-on name="ui.search.personUtils.searchCriteria.SearchCriteriaDate" classification="uses" />
+            <depends-on name="javax.swing.LayoutStyle" classification="uses" />
+          </dependencies>
+        </type>
+        <type name="ui.search.personUtils.panels.fields.CriteriaCreationPanelForField" classification="class" visibility="public" isAbstract="yes">
+          <dependencies count="2">
+            <depends-on name="ui.search.personUtils.panels.CriteriaCreationPanel" classification="extends" />
+            <depends-on name="java.lang.String" classification="uses" />
+          </dependencies>
+        </type>
+        <type name="ui.search.personUtils.panels.fields.SimpleComboBoxCreationPanel" classification="class" visibility="public">
+          <dependencies count="22">
+            <depends-on name="ui.search.personUtils.panels.fields.CriteriaCreationPanelForField" classification="extends" />
+            <depends-on name="javax.swing.JRadioButton" classification="uses" />
+            <depends-on name="javax.swing.JComboBox" classification="uses" />
+            <depends-on name="java.lang.String" classification="uses" />
+            <depends-on name="javax.swing.ButtonGroup" classification="uses" />
+            <depends-on name="javax.swing.ComboBoxModel" classification="uses" />
+            <depends-on name="javax.swing.GroupLayout" classification="uses" />
+            <depends-on name="ui.search.personUtils.searchCriteria.SearchCriteria" classification="uses" />
+            <depends-on name="javax.swing.AbstractButton" classification="uses" />
+            <depends-on name="javax.swing.DefaultComboBoxModel" classification="uses" />
+            <depends-on name="java.lang.Object" classification="uses" />
+            <depends-on name="java.awt.Container" classification="uses" />
+            <depends-on name="javax.swing.GroupLayout$Alignment" classification="uses" />
+            <depends-on name="javax.swing.GroupLayout$ParallelGroup" classification="uses" />
+            <depends-on name="javax.swing.GroupLayout$SequentialGroup" classification="uses" />
+            <depends-on name="java.awt.Component" classification="uses" />
+            <depends-on name="javax.swing.GroupLayout$Group" classification="uses" />
+            <depends-on name="javax.swing.LayoutStyle$ComponentPlacement" classification="uses" />
+            <depends-on name="java.awt.LayoutManager" classification="uses" />
+            <depends-on name="java.awt.Dimension" classification="uses" />
+            <depends-on name="ui.search.personUtils.searchCriteria.SearchCriteriaForSimpleField" classification="uses" />
+            <depends-on name="javax.swing.LayoutStyle" classification="uses" />
+          </dependencies>
+        </type>
+      </namespace>
+      <namespace name="ui.search.personUtils.panels.labels">
+        <type name="ui.search.personUtils.panels.labels.CriteriaCreationPanelForLabel$1" classification="class" visibility="default">
+          <dependencies count="4">
+            <depends-on name="java.awt.event.MouseAdapter" classification="extends" />
+            <depends-on name="ui.search.personUtils.panels.labels.CriteriaCreationPanelForLabel" classification="uses" />
+            <depends-on name="java.awt.event.MouseEvent" classification="uses" />
+            <depends-on name="bd.pojos.Label" classification="uses" />
+          </dependencies>
+        </type>
+        <type name="ui.search.personUtils.panels.labels.CriteriaCreationPanelForLabel$2" classification="class" visibility="default">
+          <dependencies count="4">
+            <depends-on name="java.awt.event.MouseAdapter" classification="extends" />
+            <depends-on name="ui.search.personUtils.panels.labels.CriteriaCreationPanelForLabel" classification="uses" />
+            <depends-on name="java.awt.event.MouseEvent" classification="uses" />
+            <depends-on name="bd.pojos.Label" classification="uses" />
+          </dependencies>
+        </type>
+        <type name="ui.search.personUtils.panels.labels.CriteriaCreationPanelForLabel$3" classification="class" visibility="default">
+          <dependencies count="6">
+            <depends-on name="java.lang.Object" classification="extends" />
+            <depends-on name="java.awt.event.ActionListener" classification="uses" />
+            <depends-on name="ui.search.personUtils.panels.labels.CriteriaCreationPanelForLabel" classification="uses" />
+            <depends-on name="java.awt.event.ActionEvent" classification="uses" />
+            <depends-on name="javax.swing.JCheckBox" classification="uses" />
+            <depends-on name="bd.pojos.Label" classification="uses" />
+          </dependencies>
+        </type>
+        <type name="ui.search.personUtils.panels.labels.CriteriaCreationPanelForLabel" classification="class" visibility="public">
+          <dependencies count="27">
+            <depends-on name="ui.search.personUtils.panels.CriteriaCreationPanel" classification="extends" />
+            <depends-on name="bd.pojos.Label" classification="uses" />
+            <depends-on name="java.util.Vector" classification="uses" />
+            <depends-on name="ui.search.personUtils.panels.labels.internalPanels.AssociatedFieldPanelForLabel" classification="uses" />
+            <depends-on name="javax.swing.JCheckBox" classification="uses" />
+            <depends-on name="javax.swing.JRadioButton" classification="uses" />
+            <depends-on name="javax.swing.ButtonGroup" classification="uses" />
+            <depends-on name="java.util.Iterator" classification="uses" />
+            <depends-on name="bd.pojos.AssociatedField" classification="uses" />
+            <depends-on name="ui.search.personUtils.panels.labels.internalPanels.SimpleDatePanelForLabel" classification="uses" />
+            <depends-on name="ui.search.personUtils.panels.labels.internalPanels.SimpleFieldPanelForLabel" classification="uses" />
+            <depends-on name="javax.swing.JSeparator" classification="uses" />
+            <depends-on name="ui.search.personUtils.searchCriteria.SearchCriteria" classification="uses" />
+            <depends-on name="java.awt.LayoutManager" classification="uses" />
+            <depends-on name="java.lang.String" classification="uses" />
+            <depends-on name="ui.search.personUtils.panels.labels.CriteriaCreationPanelForLabel$1" classification="uses" />
+            <depends-on name="java.awt.event.MouseListener" classification="uses" />
+            <depends-on name="java.awt.Component" classification="uses" />
+            <depends-on name="ui.search.personUtils.panels.labels.CriteriaCreationPanelForLabel$2" classification="uses" />
+            <depends-on name="javax.swing.AbstractButton" classification="uses" />
+            <depends-on name="java.util.Set" classification="uses" />
+            <depends-on name="ui.search.personUtils.panels.labels.CriteriaCreationPanelForLabel$3" classification="uses" />
+            <depends-on name="java.awt.event.ActionListener" classification="uses" />
+            <depends-on name="java.lang.Object" classification="uses" />
+            <depends-on name="java.awt.Dimension" classification="uses" />
+            <depends-on name="ui.search.personUtils.panels.labels.internalPanels.utilForSearchResults.AssociatedFieldValueForSearch" classification="uses" />
+            <depends-on name="ui.search.personUtils.searchCriteria.SearchCriteriaForLabel" classification="uses" />
+          </dependencies>
+        </type>
+      </namespace>
+      <namespace name="ui.search.personUtils.panels.labels.internalPanels">
+        <type name="ui.search.personUtils.panels.labels.internalPanels.SimpleFieldPanelForLabel" classification="class" visibility="public">
+          <dependencies count="21">
+            <depends-on name="ui.search.personUtils.panels.labels.internalPanels.AssociatedFieldPanelForLabel" classification="extends" />
+            <depends-on name="javax.swing.JTextField" classification="uses" />
+            <depends-on name="javax.swing.JRadioButton" classification="uses" />
+            <depends-on name="bd.pojos.AssociatedField" classification="uses" />
+            <depends-on name="javax.swing.JLabel" classification="uses" />
+            <depends-on name="javax.swing.ButtonGroup" classification="uses" />
+            <depends-on name="javax.swing.GroupLayout" classification="uses" />
+            <depends-on name="ui.search.personUtils.panels.labels.internalPanels.utilForSearchResults.AssociatedFieldValueForSearch" classification="uses" />
+            <depends-on name="java.lang.String" classification="uses" />
+            <depends-on name="javax.swing.AbstractButton" classification="uses" />
+            <depends-on name="java.awt.Container" classification="uses" />
+            <depends-on name="javax.swing.GroupLayout$Alignment" classification="uses" />
+            <depends-on name="javax.swing.GroupLayout$ParallelGroup" classification="uses" />
+            <depends-on name="javax.swing.GroupLayout$SequentialGroup" classification="uses" />
+            <depends-on name="java.awt.Component" classification="uses" />
+            <depends-on name="javax.swing.LayoutStyle$ComponentPlacement" classification="uses" />
+            <depends-on name="javax.swing.GroupLayout$Group" classification="uses" />
+            <depends-on name="java.awt.LayoutManager" classification="uses" />
+            <depends-on name="java.awt.Dimension" classification="uses" />
+            <depends-on name="ui.search.personUtils.panels.labels.internalPanels.utilForSearchResults.AssociatedFieldValueStringForSearch" classification="uses" />
+            <depends-on name="javax.swing.LayoutStyle" classification="uses" />
+          </dependencies>
+        </type>
+        <type name="ui.search.personUtils.panels.labels.internalPanels.SimpleDatePanelForLabel$1" classification="class" visibility="default">
+          <dependencies count="4">
+            <depends-on name="java.awt.event.MouseAdapter" classification="extends" />
+            <depends-on name="ui.search.personUtils.panels.labels.internalPanels.SimpleDatePanelForLabel" classification="uses" />
+            <depends-on name="java.awt.event.MouseEvent" classification="uses" />
+            <depends-on name="bd.pojos.AssociatedField" classification="uses" />
+          </dependencies>
+        </type>
+        <type name="ui.search.personUtils.panels.labels.internalPanels.SimpleDatePanelForLabel$2" classification="class" visibility="default">
+          <dependencies count="4">
+            <depends-on name="java.awt.event.MouseAdapter" classification="extends" />
+            <depends-on name="ui.search.personUtils.panels.labels.internalPanels.SimpleDatePanelForLabel" classification="uses" />
+            <depends-on name="java.awt.event.MouseEvent" classification="uses" />
+            <depends-on name="bd.pojos.AssociatedField" classification="uses" />
+          </dependencies>
+        </type>
+        <type name="ui.search.personUtils.panels.labels.internalPanels.SimpleDatePanelForLabel$3" classification="class" visibility="default">
+          <dependencies count="4">
+            <depends-on name="java.awt.event.MouseAdapter" classification="extends" />
+            <depends-on name="ui.search.personUtils.panels.labels.internalPanels.SimpleDatePanelForLabel" classification="uses" />
+            <depends-on name="java.awt.event.MouseEvent" classification="uses" />
+            <depends-on name="bd.pojos.AssociatedField" classification="uses" />
+          </dependencies>
+        </type>
+        <type name="ui.search.personUtils.panels.labels.internalPanels.SimpleDatePanelForLabel" classification="class" visibility="public">
+          <dependencies count="25">
+            <depends-on name="ui.search.personUtils.panels.labels.internalPanels.AssociatedFieldPanelForLabel" classification="extends" />
+            <depends-on name="javax.swing.JTextField" classification="uses" />
+            <depends-on name="javax.swing.JRadioButton" classification="uses" />
+            <depends-on name="javax.swing.JLabel" classification="uses" />
+            <depends-on name="bd.pojos.AssociatedField" classification="uses" />
+            <depends-on name="javax.swing.ButtonGroup" classification="uses" />
+            <depends-on name="javax.swing.GroupLayout" classification="uses" />
+            <depends-on name="ui.search.personUtils.panels.labels.internalPanels.utilForSearchResults.AssociatedFieldValueForSearch" classification="uses" />
+            <depends-on name="java.lang.String" classification="uses" />
+            <depends-on name="javax.swing.AbstractButton" classification="uses" />
+            <depends-on name="ui.search.personUtils.panels.labels.internalPanels.SimpleDatePanelForLabel$1" classification="uses" />
+            <depends-on name="java.awt.event.MouseListener" classification="uses" />
+            <depends-on name="ui.search.personUtils.panels.labels.internalPanels.SimpleDatePanelForLabel$2" classification="uses" />
+            <depends-on name="ui.search.personUtils.panels.labels.internalPanels.SimpleDatePanelForLabel$3" classification="uses" />
+            <depends-on name="java.awt.Container" classification="uses" />
+            <depends-on name="javax.swing.GroupLayout$Alignment" classification="uses" />
+            <depends-on name="javax.swing.GroupLayout$ParallelGroup" classification="uses" />
+            <depends-on name="javax.swing.GroupLayout$SequentialGroup" classification="uses" />
+            <depends-on name="java.awt.Component" classification="uses" />
+            <depends-on name="javax.swing.LayoutStyle$ComponentPlacement" classification="uses" />
+            <depends-on name="javax.swing.GroupLayout$Group" classification="uses" />
+            <depends-on name="java.awt.LayoutManager" classification="uses" />
+            <depends-on name="java.awt.Dimension" classification="uses" />
+            <depends-on name="ui.search.personUtils.panels.labels.internalPanels.utilForSearchResults.AssociatedFieldValueDateForSearch" classification="uses" />
+            <depends-on name="javax.swing.LayoutStyle" classification="uses" />
+          </dependencies>
+        </type>
+        <type name="ui.search.personUtils.panels.labels.internalPanels.AssociatedFieldPanelForLabel" classification="class" visibility="public" isAbstract="yes">
+          <dependencies count="2">
+            <depends-on name="javax.swing.JPanel" classification="extends" />
+            <depends-on name="ui.search.personUtils.panels.labels.internalPanels.utilForSearchResults.AssociatedFieldValueForSearch" classification="uses" />
+          </dependencies>
+        </type>
+      </namespace>
+      <namespace name="ui.search.personUtils.panels.labels.internalPanels.utilForSearchResults">
+        <type name="ui.search.personUtils.panels.labels.internalPanels.utilForSearchResults.AssociatedFieldValueDateForSearch" classification="class" visibility="public">
+          <dependencies count="3">
+            <depends-on name="ui.search.personUtils.panels.labels.internalPanels.utilForSearchResults.AssociatedFieldValueForSearch" classification="extends" />
+            <depends-on name="java.lang.String" classification="uses" />
+            <depends-on name="bd.pojos.AssociatedField" classification="uses" />
+          </dependencies>
+        </type>
+        <type name="ui.search.personUtils.panels.labels.internalPanels.utilForSearchResults.AssociatedFieldValueForSearch" classification="class" visibility="public">
+          <dependencies count="2">
+            <depends-on name="java.lang.Object" classification="extends" />
+            <depends-on name="bd.pojos.AssociatedField" classification="uses" />
+          </dependencies>
+        </type>
+        <type name="ui.search.personUtils.panels.labels.internalPanels.utilForSearchResults.AssociatedFieldValueStringForSearch" classification="class" visibility="public">
+          <dependencies count="3">
+            <depends-on name="ui.search.personUtils.panels.labels.internalPanels.utilForSearchResults.AssociatedFieldValueForSearch" classification="extends" />
+            <depends-on name="java.lang.String" classification="uses" />
+            <depends-on name="bd.pojos.AssociatedField" classification="uses" />
+          </dependencies>
+        </type>
+      </namespace>
+      <namespace name="ui.search.personUtils.searchCriteria">
+        <type name="ui.search.personUtils.searchCriteria.SearchCriteriaToQuery" classification="class" visibility="public" isAbstract="yes">
+          <dependencies count="3">
+            <depends-on name="ui.search.personUtils.searchCriteria.SearchCriteria" classification="extends" />
+            <depends-on name="java.lang.String" classification="uses" />
+            <depends-on name="org.hibernate.criterion.Criterion" classification="uses" />
+          </dependencies>
+        </type>
+        <type name="ui.search.personUtils.searchCriteria.SearchCriteriaForSimpleField" classification="class" visibility="public">
+          <dependencies count="7">
+            <depends-on name="ui.search.personUtils.searchCriteria.SearchCriteriaForField" classification="extends" />
+            <depends-on name="java.lang.String" classification="uses" />
+            <depends-on name="org.hibernate.criterion.Criterion" classification="uses" />
+            <depends-on name="java.lang.StringBuilder" classification="uses" />
+            <depends-on name="java.lang.Object" classification="uses" />
+            <depends-on name="org.hibernate.criterion.Restrictions" classification="uses" />
+            <depends-on name="org.hibernate.criterion.SimpleExpression" classification="uses" />
+          </dependencies>
+        </type>
+        <type name="ui.search.personUtils.searchCriteria.SearchCriteriaForEvent" classification="class" visibility="public">
+          <dependencies count="10">
+            <depends-on name="ui.search.personUtils.searchCriteria.SearchCriteriaToFilter" classification="extends" />
+            <depends-on name="bd.pojos.Event" classification="uses" />
+            <depends-on name="bd.pojos.EventInstance" classification="uses" />
+            <depends-on name="java.util.List" classification="uses" />
+            <depends-on name="bd.pojos.Person" classification="uses" />
+            <depends-on name="java.util.Iterator" classification="uses" />
+            <depends-on name="java.lang.String" classification="uses" />
+            <depends-on name="java.util.ArrayList" classification="uses" />
+            <depends-on name="java.lang.Object" classification="uses" />
+            <depends-on name="java.lang.StringBuilder" classification="uses" />
+          </dependencies>
+        </type>
+        <type name="ui.search.personUtils.searchCriteria.SearchCriteriaForField" classification="class" visibility="public" isAbstract="yes">
+          <dependencies count="2">
+            <depends-on name="ui.search.personUtils.searchCriteria.SearchCriteriaToQuery" classification="extends" />
+            <depends-on name="java.lang.String" classification="uses" />
+          </dependencies>
+        </type>
+        <type name="ui.search.personUtils.searchCriteria.SearchCriteriaForLabel" classification="class" visibility="public">
+          <dependencies count="16">
+            <depends-on name="ui.search.personUtils.searchCriteria.SearchCriteriaToFilter" classification="extends" />
+            <depends-on name="bd.pojos.Label" classification="uses" />
+            <depends-on name="java.util.Vector" classification="uses" />
+            <depends-on name="ui.search.personUtils.panels.labels.internalPanels.utilForSearchResults.AssociatedFieldValueForSearch" classification="uses" />
+            <depends-on name="java.util.List" classification="uses" />
+            <depends-on name="bd.pojos.Person" classification="uses" />
+            <depends-on name="java.util.Iterator" classification="uses" />
+            <depends-on name="ui.search.personUtils.panels.labels.internalPanels.utilForSearchResults.AssociatedFieldValueDateForSearch" classification="uses" />
+            <depends-on name="bd.pojos.AssociatedFieldValueForLabel" classification="uses" />
+            <depends-on name="java.lang.String" classification="uses" />
+            <depends-on name="java.util.ArrayList" classification="uses" />
+            <depends-on name="java.lang.Object" classification="uses" />
+            <depends-on name="bd.pojos.AssociatedField" classification="uses" />
+            <depends-on name="java.lang.Integer" classification="uses" />
+            <depends-on name="ui.search.personUtils.panels.labels.internalPanels.utilForSearchResults.AssociatedFieldValueStringForSearch" classification="uses" />
+            <depends-on name="java.lang.StringBuilder" classification="uses" />
+          </dependencies>
+        </type>
+        <type name="ui.search.personUtils.searchCriteria.SearchCriteriaDateOnlyForMonthAndDay" classification="class" visibility="public">
+          <dependencies count="8">
+            <depends-on name="ui.search.personUtils.searchCriteria.SearchCriteriaDateOnlyForMonth" classification="extends" />
+            <depends-on name="java.lang.String" classification="uses" />
+            <depends-on name="org.hibernate.criterion.Criterion" classification="uses" />
+            <depends-on name="java.lang.StringBuilder" classification="uses" />
+            <depends-on name="java.lang.Object" classification="uses" />
+            <depends-on name="bd.specialCriterions.DayAndMonthEqExpression" classification="uses" />
+            <depends-on name="java.lang.Integer" classification="uses" />
+            <depends-on name="org.hibernate.criterion.Restrictions" classification="uses" />
+          </dependencies>
+        </type>
+        <type name="ui.search.personUtils.searchCriteria.SearchCriteriaToFilter" classification="class" visibility="public" isAbstract="yes">
+          <dependencies count="3">
+            <depends-on name="ui.search.personUtils.searchCriteria.SearchCriteria" classification="extends" />
+            <depends-on name="java.util.List" classification="uses" />
+            <depends-on name="bd.pojos.Person" classification="uses" />
+          </dependencies>
+        </type>
+        <type name="ui.search.personUtils.searchCriteria.SearchCriteriaDate" classification="class" visibility="public">
+          <dependencies count="8">
+            <depends-on name="ui.search.personUtils.searchCriteria.SearchCriteriaDateOnlyForMonthAndDay" classification="extends" />
+            <depends-on name="java.lang.String" classification="uses" />
+            <depends-on name="org.hibernate.criterion.Criterion" classification="uses" />
+            <depends-on name="java.lang.StringBuilder" classification="uses" />
+            <depends-on name="java.lang.Object" classification="uses" />
+            <depends-on name="bd.specialCriterions.DayMonthAndYearEqExpression" classification="uses" />
+            <depends-on name="java.lang.Integer" classification="uses" />
+            <depends-on name="org.hibernate.criterion.Restrictions" classification="uses" />
+          </dependencies>
+        </type>
+        <type name="ui.search.personUtils.searchCriteria.SearchCriteriaDateOnlyForMonth" classification="class" visibility="public">
+          <dependencies count="8">
+            <depends-on name="ui.search.personUtils.searchCriteria.SearchCriteriaForField" classification="extends" />
+            <depends-on name="java.lang.String" classification="uses" />
+            <depends-on name="org.hibernate.criterion.Criterion" classification="uses" />
+            <depends-on name="java.lang.StringBuilder" classification="uses" />
+            <depends-on name="java.lang.Object" classification="uses" />
+            <depends-on name="bd.specialCriterions.MonthEqExpression" classification="uses" />
+            <depends-on name="java.lang.Integer" classification="uses" />
+            <depends-on name="org.hibernate.criterion.Restrictions" classification="uses" />
+          </dependencies>
+        </type>
+        <type name="ui.search.personUtils.searchCriteria.SearchCriteriaForBoolean" classification="class" visibility="public">
+          <dependencies count="7">
+            <depends-on name="ui.search.personUtils.searchCriteria.SearchCriteriaForField" classification="extends" />
+            <depends-on name="java.lang.String" classification="uses" />
+            <depends-on name="org.hibernate.criterion.Criterion" classification="uses" />
+            <depends-on name="java.lang.StringBuilder" classification="uses" />
+            <depends-on name="java.lang.Boolean" classification="uses" />
+            <depends-on name="org.hibernate.criterion.Restrictions" classification="uses" />
+            <depends-on name="java.lang.Object" classification="uses" />
+          </dependencies>
+        </type>
+        <type name="ui.search.personUtils.searchCriteria.SearchCriteria" classification="class" visibility="public">
+          <dependencies count="1">
+            <depends-on name="java.lang.Object" classification="extends" />
+          </dependencies>
+        </type>
+      </namespace>
+    </container>
+  </context>
+</ODEM>

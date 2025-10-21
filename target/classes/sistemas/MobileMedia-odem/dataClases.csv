@@ -1,0 +1,28 @@
+"";Recall;Precision
+AdamicAdar - First 10 Elements;0,666;0,4
+AdamicAdar - CutPoint 0.1;0,333;1
+AdamicAdar - Umbral 1.0;0,333;0,5
+CommonNeighbors - First 10 Elements;0,666;0,4
+CommonNeighbors - CutPoint 0.1;0,333;1
+CommonNeighbors - Umbral 1.0;1;0,5
+Sorensen - First 3 Elements;0,333;0,333
+Sorensen - CutPoint 0.1;0,333;1
+Sorensen - Umbral 0.6;0;NaN
+ResourceAllocation - First 3 Elements;0,333;0,333
+ResourceAllocation - CutPoint 0.1;0,333;1
+ResourceAllocation - Umbral 0.3;0,333;0,5
+HubPromoted - First 3 Elements;0,333;0,333
+HubPromoted - CutPoint 0.1;0,666;0,5
+HubPromoted - Umbral 0.15;0;NaN
+HubDepressed - First 3 Elements;0,333;0,333
+HubDepressed - CutPoint 0.1;0,333;1
+HubDepressed - Umbral 0.09;0;NaN
+PreferentialAttachment - First 3 Elements;0,666;0,666
+PreferentialAttachment - CutPoint 0.1;0,333;1
+PreferentialAttachment - Umbral 29.0;0,666;0,666
+CoeficienteDeJaccard - First 3 Elements;0,333;0,333
+CoeficienteDeJaccard - CutPoint 0.1;0,333;1
+CoeficienteDeJaccard - Umbral 0.4;0;NaN
+Katz - First 3 Elements;1;1
+Katz - CutPoint 0.1;0,333;1
+Katz - Umbral 1.0;1;0,5
