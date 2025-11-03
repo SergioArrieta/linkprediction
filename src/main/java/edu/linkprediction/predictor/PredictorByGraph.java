@@ -7,10 +7,12 @@ import edu.linkprediction.utils.Utils;
 import edu.linkprediction.validation.MicroAvgValidator;
 import edu.uci.ics.jung.graph.Graph;
 import lombok.Getter;
+import lombok.extern.slf4j.Slf4j;
 
 import java.util.*;
 
 @Getter
+@Slf4j
 public class PredictorByGraph extends Predictor {
 
     /**
@@ -20,9 +22,13 @@ public class PredictorByGraph extends Predictor {
      * @param graph2
      * @param sim
      */
-    private List<Dependency> generatePredictableByGraph(Graph<String, Integer> graph1, Graph<String, Integer> graph2, Similarity sim) {
+    private List<Dependency> generateDependeciesWithScoreByGraph(Graph<String, Integer> graph1, Graph<String, Integer> graph2, Similarity sim) {
         List<Dependency> newDependencies = new ArrayList<>();
-        Utils.getDependenciasPredecibles(graph1, graph2).keySet().forEach(node -> newDependencies.addAll(getListByNode(graph1,node,sim)));
+        graph1.getVertices().forEach(node -> {
+            if (graph2.containsVertex(node)){
+                newDependencies.addAll(calculateScoreByNode(graph1,graph2,node,sim));
+            }
+        });
         return newDependencies;
     }
 
@@ -35,13 +41,12 @@ public class PredictorByGraph extends Predictor {
      * @param ranking
      */
     public List<String[]> generateFullPrediction(Graph<String, Integer> graphV1, Graph<String, Integer> graphV2, List<Similarity> similarities, Ranking ranking) {
-
         List<String[]> body = new ArrayList<>();
         MicroAvgValidator validator = new MicroAvgValidator();
 
         similarities.forEach(similarity -> {
             // generar TODAS las dependencias para el grafo con el algoritmo de lp similarity
-            List<Dependency> dependenciesWithScore = generatePredictableByGraph(graphV1, graphV2, similarity);
+            List<Dependency> dependenciesWithScore = generateDependeciesWithScoreByGraph(graphV1, graphV2, similarity);
             // rankea esas dependencias
             List<Dependency> dependenciesWithScoreRankeadas = ranking.rank(dependenciesWithScore);
             //aplica cada uno de los thresholds

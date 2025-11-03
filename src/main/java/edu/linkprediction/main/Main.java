@@ -10,6 +10,7 @@ import edu.linkprediction.parser.*;
 import edu.linkprediction.parser.forpackage.ParserPackage;
 import edu.linkprediction.predictor.Predictor;
 import edu.linkprediction.predictor.PredictorByGraph;
+import edu.linkprediction.predictor.PredictorByNode;
 import edu.linkprediction.ranking.Ranking;
 import edu.linkprediction.ranking.RankingIndividual;
 import edu.linkprediction.similarityMetrics.*;
@@ -22,15 +23,16 @@ public class Main {
     public static void main(String[] args) throws Exception {
        //showGraph();
        //predictByPackage();
-       predictByClasses();
+       //predictByClasses();
+        testing();
     }
 
     private static void predictByPackage() throws Exception {
-        ParserPackage ParserPackage = new ParserPackage("src/main/resources/sistemas/MobileMedia-odem/mobilemedia2.odem");
-        ParserPackage ParserPackage2 = new ParserPackage("src/main/resources/sistemas/MobileMedia-odem/mobilemedia3.odem");
+        ParserPackage parserCurrent = new ParserPackage("src/main/resources/sistemas/MobileMedia-odem/mobilemedia2.odem");
+        ParserPackage parserNext = new ParserPackage("src/main/resources/sistemas/MobileMedia-odem/mobilemedia3.odem");
 
-        Graph<String, Integer> graphV1 = ParserPackage.getGraph();
-        Graph<String, Integer> graphV2 = ParserPackage2.getGraph();
+        Graph<String, Integer> graphV1 = parserCurrent.getGraph();
+        Graph<String, Integer> graphV2 = parserNext.getGraph();
 
         List<Similarity> similarities = new ArrayList<>();
         similarities.add(new AdamicAdar(Utils.getThresholdsList(3, 0.1, 1)));
@@ -52,10 +54,10 @@ public class Main {
 
     private static void predictByClasses() throws IOException, JDOMException {
         XmlParser odem = new OdemParser();
-        Parser parser1 = new ParserJung("src/main/resources/sistemas/MobileMedia-odem/mobilemedia2.odem", odem);
-        Parser parser2 = new ParserJung("src/main/resources/sistemas/MobileMedia-odem/mobilemedia3.odem", odem);
-        Graph<String, Integer> graphV1 = (Graph<String, Integer>) parser1.getGraph();
-        Graph<String, Integer> graphV2 = (Graph<String, Integer>) parser2.getGraph();
+        Parser parserCurrent = new ParserJung("src/main/resources/sistemas/MobileMedia-odem/mobilemedia2.odem", odem);
+        Parser parserNext = new ParserJung("src/main/resources/sistemas/MobileMedia-odem/mobilemedia3.odem", odem);
+        Graph<String, Integer> graphV1 = (Graph<String, Integer>) parserCurrent.getGraph();
+        Graph<String, Integer> graphV2 = (Graph<String, Integer>) parserNext.getGraph();
 
         List<Similarity> similarities = new ArrayList<>();
         similarities.add(new AdamicAdar(Utils.getThresholdsList(10, 0.1, 1)));
@@ -88,4 +90,23 @@ public class Main {
         parserG.showGraph();
     }
 
+    private static void testing () throws IOException, JDOMException {
+
+        XmlParser odem = new OdemParser();
+        Parser parserCurrent = new ParserJung("src/main/resources/sistemas/MobileMedia-odem/mobilemedia2.odem", odem);
+        Parser parserNext = new ParserJung("src/main/resources/sistemas/MobileMedia-odem/mobilemedia3.odem", odem);
+        Graph<String, Integer> graphV1 = (Graph<String, Integer>) parserCurrent.getGraph();
+        Graph<String, Integer> graphV2 = (Graph<String, Integer>) parserNext.getGraph();
+
+        List<Similarity> similarities = new ArrayList<>();
+        similarities.add(new AdamicAdar(Utils.getThresholdsList(10, 0.1, 1)));
+
+        Ranking ranking = new RankingIndividual();
+
+        Predictor predictor = new PredictorByNode();
+        CsvUtil.write(
+                predictor.generateFullPrediction(graphV1,graphV2,similarities,ranking),
+                CsvUtil.DEFAULT_HEADERS,
+                "src/main/resources/sistemas/MobileMedia-odem/result.csv");
+    }
 }

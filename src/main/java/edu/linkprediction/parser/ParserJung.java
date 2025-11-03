@@ -25,7 +25,7 @@ import edu.uci.ics.jung.visualization.BasicVisualizationServer;
 import edu.uci.ics.jung.visualization.decorators.ToStringLabeller;
 import edu.uci.ics.jung.visualization.renderers.Renderer.VertexLabel.Position;
 
-public class ParserJung extends Parser{
+public class ParserJung extends Parser {
 
 	Set<String> clases; // se puede reemplazar por outRelations.keySet();
 	public Map<String, Map<String, Float>> outRelations;

@@ -11,7 +11,9 @@ import edu.linkprediction.threshold.Threshold;
 import edu.linkprediction.threshold.Umbral;
 import edu.uci.ics.jung.graph.DirectedSparseGraph;
 import edu.uci.ics.jung.graph.Graph;
+import lombok.extern.slf4j.Slf4j;
 
+@Slf4j
 public final class Utils {
 	
 	/**
@@ -157,30 +159,34 @@ public final class Utils {
 
     /**
      * Devuelve un Hashmap con todas las dependencias predecibles por nodo. La key es el nodo.
-     * Se calcula removiendo de la lista de dependencias de la proxima version, las dependencias ya existentes. No se consideran las dependencias de nodos que
-     * desparecen en la siguiente version
+     * Se calcula removiendo de la lista de dependencias de la proxima version, las dependencias ya existentes.
+     * Una dependencia es no predicible si uno de sus 2 nodos no existe en la proxima version.
+     * USADO EN MACROAVG
      **/
 	public static HashMap<String, List<Dependency>> getDependenciasPredecibles(Graph<String, Integer> actualVersion, Graph<String, Integer> nextVersion) {
-		
-		HashMap<String, List<Dependency>> hashPredecibles = new HashMap<>();
 
-		List<Dependency> originales = Utils.getDependiciesFromGraph(actualVersion);
-		List<Dependency> next = Utils.getDependiciesFromGraph(Utils.removeNewVertex(actualVersion, nextVersion));
+        final List<Dependency> originales = Utils.getDependiciesFromGraph(actualVersion);
+        final Collection<String> nodosActuales = actualVersion.getVertices();
 
-        List<Dependency> listPredecibles = next.stream().filter(d -> !originales.contains(d)).collect(Collectors.toList());
+        List<Dependency> nextTodas = Utils.getDependiciesFromGraph(nextVersion);
+        List<Dependency> listPredecibles = nextTodas.stream()
+                .filter(d -> nodosActuales.contains(d.getNodoA()) && nodosActuales.contains(d.getNodoB()))
+                .filter(d -> !originales.contains(d))
+                .collect(Collectors.toList());
 
-		listPredecibles.forEach(dependencia -> {
-			List<Dependency> values = hashPredecibles.get(dependencia.getNodoA());
-			if (values == null) {
-				values = new ArrayList<>();
-			}
-			values.add(dependencia);
-			hashPredecibles.put(dependencia.getNodoA(), values);
-		});
-
-		return hashPredecibles;
+        HashMap<String, List<Dependency>> hashPredecibles = new HashMap<>();
+        listPredecibles.forEach(dependencia -> {
+            hashPredecibles.computeIfAbsent(dependencia.getNodoA(), k -> new ArrayList<>()).add(dependencia);
+        });
+        return hashPredecibles;
 	}
 
+    /**
+     * USADO EN MICROAVG
+     * @param actualVersion
+     * @param nextVersion
+     * @return
+     */
     public static List<Dependency> getListaDependenciasPredecibles(Graph<String, Integer> actualVersion, Graph<String, Integer> nextVersion) {
 
         List<Dependency> originals = Utils.getDependiciesFromGraph(actualVersion);

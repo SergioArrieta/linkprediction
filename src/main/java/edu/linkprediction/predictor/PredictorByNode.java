@@ -9,8 +9,11 @@ import edu.linkprediction.utils.Utils;
 import edu.linkprediction.validation.MacroAvgValidator;
 import edu.uci.ics.jung.graph.Graph;
 import lombok.Getter;
+import lombok.extern.slf4j.Slf4j;
+import org.apache.commons.collections.CollectionUtils;
 
 @Getter
+@Slf4j
 public class PredictorByNode extends Predictor {
 
     /**
@@ -22,11 +25,11 @@ public class PredictorByNode extends Predictor {
      * @param ranking
      * @param sim
      */
-    private List<List<Dependency>> generatePredictableByNode(Graph<String, Integer> graph1, Graph<String, Integer> graph2,
+    private List<List<Dependency>> generateDependeciesWithScoreByNode(Graph<String, Integer> graph1, Graph<String, Integer> graph2,
                                                             Ranking ranking, Similarity sim) {
         List<List<Dependency>> newDependencies = new ArrayList<>();
-        Utils.getDependenciasPredecibles(graph1, graph2).keySet().forEach(node -> {
-            List<Dependency> dependenciesFromNode = getListByNode(graph1, node, sim);
+        graph1.getVertices().forEach(node -> {
+            List<Dependency> dependenciesFromNode = calculateScoreByNode(graph1, graph2, node, sim);
             newDependencies.add(ranking.rank(dependenciesFromNode));
         });
         return newDependencies;
@@ -42,18 +45,20 @@ public class PredictorByNode extends Predictor {
      * @param ranking
      */
     public List<String[]> generateFullPrediction(Graph<String, Integer> graphV1, Graph<String, Integer> graphV2, List<Similarity> similarities, Ranking ranking) {
-
         List<String[]> body = new ArrayList<>();
         MacroAvgValidator validator = new MacroAvgValidator();
 
         similarities.forEach(similarity -> {
             // generar todas la lista de dependencias de cada nodo con el algoritmo de lp similarity dado y ordernarla en base al ranking
-            List<List<Dependency>> newDependencies = generatePredictableByNode(graphV1, graphV2, ranking, similarity);
+            List<List<Dependency>> newDependencies = generateDependeciesWithScoreByNode(graphV1, graphV2, ranking, similarity);
             // recorrer la lista de threholds y aplicar cada uno a cada lista ya ordenada de dependencia
             similarity.getThresholdList().forEach(threshold -> {
                 HashMap<String, List<Dependency>> dependenciesByNode = new HashMap<>();
-                newDependencies.forEach(dependenciasRankeadsDelnodo ->
-                        dependenciesByNode.put(dependenciasRankeadsDelnodo.get(0).getNodoA(), threshold.getListFromThreshold(dependenciasRankeadsDelnodo)));
+                newDependencies.forEach(dependenciasRankeadsDelnodo -> {
+                    if (CollectionUtils.isNotEmpty(dependenciasRankeadsDelnodo)) {
+                        dependenciesByNode.put(dependenciasRankeadsDelnodo.get(0).getNodoA(), threshold.getListFromThreshold(dependenciasRankeadsDelnodo));
+                    }
+                });
                 body.add(Utils.getRow(validator.getStats(graphV2, dependenciesByNode, graphV1),similarity.getName(),threshold.getName()));
             });
         });

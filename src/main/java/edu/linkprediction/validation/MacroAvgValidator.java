@@ -9,6 +9,7 @@ import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Objects;
 import java.util.concurrent.atomic.AtomicInteger;
 
 public class MacroAvgValidator {
@@ -42,13 +43,15 @@ public class MacroAvgValidator {
 
             aciertos.set(0);
             fallos.set(0);
-            predecibles.get(node).forEach(dependenciaPredecible -> {
-                if (predichos.contains(dependenciaPredecible)) { // me fijo si la dependencias predicha esta entre las predicibles entonces es un acierto
-                    aciertos.incrementAndGet();
-                } else {
-                    fallos.incrementAndGet();
-                }
-            });;
+            if (Objects.nonNull(predecibles.get(node))) {
+                predecibles.get(node).forEach(dependenciaPredecible -> {
+                    if (predichos.contains(dependenciaPredecible)) { // me fijo si la dependencias predicha esta entre las predicibles entonces es un acierto
+                        aciertos.incrementAndGet();
+                    } else {
+                        fallos.incrementAndGet();
+                    }
+                });
+            }
 
             // prediction.get(node).size() es la cantidad de predicciones hechas finalmente, es decir la suma entre TP y FP
             double TPFP =  prediction.get(node).size();
