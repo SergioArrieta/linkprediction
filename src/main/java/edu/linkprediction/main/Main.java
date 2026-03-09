@@ -16,35 +16,42 @@ import edu.linkprediction.ranking.RankingIndividual;
 import edu.linkprediction.similarityMetrics.*;
 import edu.linkprediction.utils.Utils;
 import edu.uci.ics.jung.graph.Graph;
+import lombok.extern.slf4j.Slf4j;
 import org.jdom2.JDOMException;
 
+@Slf4j
 public class Main {
 
     public static void main(String[] args) throws Exception {
-       //showGraph();
-       //predictByPackage();
-       //predictByClasses();
-        testing();
+        //showGraph();
+        // predictByPackage();
+        predictByClasses();
     }
 
     private static void predictByPackage() throws Exception {
-        ParserPackage parserCurrent = new ParserPackage("src/main/resources/sistemas/MobileMedia-odem/mobilemedia2.odem");
-        ParserPackage parserNext = new ParserPackage("src/main/resources/sistemas/MobileMedia-odem/mobilemedia3.odem");
-
+        ParserPackage parserCurrent = new ParserPackage("src/main/resources/sistemas/MobileMedia-odem/mobilemedia6.odem");
         Graph<String, Integer> graphV1 = parserCurrent.getGraph();
+
+        ParserPackage parserNext = new ParserPackage("src/main/resources/sistemas/MobileMedia-odem/mobilemedia7.odem");
         Graph<String, Integer> graphV2 = parserNext.getGraph();
 
         List<Similarity> similarities = new ArrayList<>();
+
         similarities.add(new AdamicAdar(Utils.getThresholdsList(3, 0.1, 1)));
-        similarities.add(new CommonNeighbors(Utils.getThresholdsList(3, 0.1, 1)));
-        similarities.add(new Sorensen(Utils.getThresholdsList(3, 0.1, 0.6)));
+        similarities.add(new CoeficienteDeJaccard(Utils.getThresholdsList(3, 0.1, 0.6)));
+        similarities.add(new CommonNeighbors(Utils.getThresholdsList(3, 0.1, 2)));
+        similarities.add(new HubPromoted(Utils.getThresholdsList(3, 0.2, 0.2)));
+        similarities.add(new HubDepressed(Utils.getThresholdsList(3, 0.2, 0.1)));
+        similarities.add(new PreferentialAttachment(Utils.getThresholdsList(3, 0.1, 15)));
         similarities.add(new ResourceAllocation(Utils.getThresholdsList(3, 0.1, 0.3)));
-        similarities.add(new HubPromoted(Utils.getThresholdsList(3, 0.1, 0.15)));
-        similarities.add(new HubDepressed(Utils.getThresholdsList(3, 0.1, 0.09)));
+        similarities.add(new Sorensen(Utils.getThresholdsList(3, 0.1, 0.6)));
+        similarities.add(new Katz(Utils.getThresholdsList(3, 0.1, 1)));
+        similarities.add(new SimRank(graphV1,Utils.getThresholdsList(3, 0.1, 0.1)));
 
         Ranking ranking = new RankingIndividual();
 
-        Predictor predictor = new PredictorByGraph();
+        // Predictor predictor = new PredictorByGraph();
+        Predictor predictor = new PredictorByNode();
 
         CsvUtil.write(
                 predictor.generateFullPrediction(graphV1,graphV2,similarities,ranking),
@@ -54,25 +61,38 @@ public class Main {
 
     private static void predictByClasses() throws IOException, JDOMException {
         XmlParser odem = new OdemParser();
-        Parser parserCurrent = new ParserJung("src/main/resources/sistemas/MobileMedia-odem/mobilemedia2.odem", odem);
-        Parser parserNext = new ParserJung("src/main/resources/sistemas/MobileMedia-odem/mobilemedia3.odem", odem);
+        Parser parserCurrent = new ParserJung("src/main/resources/sistemas/MobileMedia-odem/mobilemedia6.odem", odem);
         Graph<String, Integer> graphV1 = (Graph<String, Integer>) parserCurrent.getGraph();
+
+        Parser parserNext = new ParserJung("src/main/resources/sistemas/MobileMedia-odem/mobilemedia7.odem", odem);
         Graph<String, Integer> graphV2 = (Graph<String, Integer>) parserNext.getGraph();
 
         List<Similarity> similarities = new ArrayList<>();
-        similarities.add(new AdamicAdar(Utils.getThresholdsList(10, 0.1, 1)));
-        similarities.add(new CommonNeighbors(Utils.getThresholdsList(10, 0.1, 1)));
-        similarities.add(new Sorensen(Utils.getThresholdsList(3, 0.1, 0.6)));
+        similarities.add(new AdamicAdar(Utils.getThresholdsList(14, 0.1, 1)));
+        similarities.add(new CoeficienteDeJaccard(Utils.getThresholdsList(14, 0.1, 0.6)));
+        similarities.add(new CommonNeighbors(Utils.getThresholdsList(14, 0.1, 2)));
+        similarities.add(new HubPromoted(Utils.getThresholdsList(14, 0.2, 0.2)));
+        similarities.add(new HubDepressed(Utils.getThresholdsList(14, 0.2, 0.1)));
+        similarities.add(new PreferentialAttachment(Utils.getThresholdsList(14, 0.1, 15)));
+        similarities.add(new ResourceAllocation(Utils.getThresholdsList(14, 0.1, 0.3)));
+        similarities.add(new Sorensen(Utils.getThresholdsList(14, 0.1, 0.6)));
+        similarities.add(new Katz(Utils.getThresholdsList(14, 0.1, 1)));
+        similarities.add(new SimRank(graphV1,Utils.getThresholdsList(14, 0.1, 0.1)));
+
+        /*similarities.add(new AdamicAdar(Utils.getThresholdsList(3, 0.1, 1)));
+        similarities.add(new CoeficienteDeJaccard(Utils.getThresholdsList(3, 0.1, 0.6)));
+        similarities.add(new CommonNeighbors(Utils.getThresholdsList(3, 0.1, 2)));
+        similarities.add(new HubPromoted(Utils.getThresholdsList(3, 0.2, 0.2)));
+        similarities.add(new HubDepressed(Utils.getThresholdsList(3, 0.2, 0.1)));
+        similarities.add(new PreferentialAttachment(Utils.getThresholdsList(3, 0.1, 15)));
         similarities.add(new ResourceAllocation(Utils.getThresholdsList(3, 0.1, 0.3)));
-        similarities.add(new HubPromoted(Utils.getThresholdsList(3, 0.1, 0.15)));
-        similarities.add(new HubDepressed(Utils.getThresholdsList(3, 0.1, 0.09)));
-        similarities.add(new PreferentialAttachment(Utils.getThresholdsList(3, 0.1, 29)));
-        similarities.add(new CoeficienteDeJaccard(Utils.getThresholdsList(3, 0.1, 0.4)));
+        similarities.add(new Sorensen(Utils.getThresholdsList(3, 0.1, 0.6)));
         similarities.add(new Katz(Utils.getThresholdsList(3, 0.1, 1)));
+        similarities.add(new SimRank(graphV1,Utils.getThresholdsList(3, 0.1, 0.1)));*/
 
         Ranking ranking = new RankingIndividual();
 
-        Predictor predictor = new PredictorByGraph();
+        Predictor predictor = new PredictorByNode();
         CsvUtil.write(
                 predictor.generateFullPrediction(graphV1,graphV2,similarities,ranking),
                 CsvUtil.DEFAULT_HEADERS,
@@ -90,23 +110,4 @@ public class Main {
         parserG.showGraph();
     }
 
-    private static void testing () throws IOException, JDOMException {
-
-        XmlParser odem = new OdemParser();
-        Parser parserCurrent = new ParserJung("src/main/resources/sistemas/MobileMedia-odem/mobilemedia2.odem", odem);
-        Parser parserNext = new ParserJung("src/main/resources/sistemas/MobileMedia-odem/mobilemedia3.odem", odem);
-        Graph<String, Integer> graphV1 = (Graph<String, Integer>) parserCurrent.getGraph();
-        Graph<String, Integer> graphV2 = (Graph<String, Integer>) parserNext.getGraph();
-
-        List<Similarity> similarities = new ArrayList<>();
-        similarities.add(new AdamicAdar(Utils.getThresholdsList(10, 0.1, 1)));
-
-        Ranking ranking = new RankingIndividual();
-
-        Predictor predictor = new PredictorByNode();
-        CsvUtil.write(
-                predictor.generateFullPrediction(graphV1,graphV2,similarities,ranking),
-                CsvUtil.DEFAULT_HEADERS,
-                "src/main/resources/sistemas/MobileMedia-odem/result.csv");
-    }
 }

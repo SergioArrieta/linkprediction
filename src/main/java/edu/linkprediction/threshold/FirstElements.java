@@ -11,7 +11,7 @@ public class FirstElements extends Threshold {
 
     public FirstElements(int k) {
         this.k = k;
-        super.name = "First " + k + " Elements";
+        super.name = "Primeros " + k + " elementos";
     }
 
 	@Override

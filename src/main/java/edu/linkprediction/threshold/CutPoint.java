@@ -11,7 +11,7 @@ public class CutPoint extends Threshold {
 
     public CutPoint(double p) {
         this.percent = p;
-        name = "CutPoint " + p;
+        name = "Punto de corte de " + p;
     }
 
 	/**

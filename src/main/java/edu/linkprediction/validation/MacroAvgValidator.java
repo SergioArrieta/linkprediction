@@ -67,8 +67,17 @@ public class MacroAvgValidator {
             recalles.add(recall);
         });
 
-        double recall = recalles.stream().mapToDouble(a-> a).average().orElse(Double.NaN);
-        double precision = precisiones.stream().mapToDouble(a-> a).average().orElse(Double.NaN);
+        double recall = recalles.stream()
+                .filter(d -> !d.isNaN()) // Ignora los nodos donde no había nada que predecir
+                .mapToDouble(a -> a)
+                .average()
+                .orElse(0.0);
+
+        double precision = precisiones.stream()
+                .filter(d -> !d.isNaN()) // Ignora donde no se hicieron predicciones
+                .mapToDouble(a -> a)
+                .average()
+                .orElse(0.0);
 
         return new String[]{String.valueOf(df.format(recall)),String.valueOf(df.format(precision))};
     }

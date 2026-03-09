@@ -17,19 +17,20 @@ public abstract class Predictor {
         List<Dependency> dependenciesList = new ArrayList<>();
 
         // Si no tiene vecino, currentNeighbors.contains(possibleNeighbor) siempre devuelve true
-        Set<String> currentNeighbors = Objects.nonNull(graph1.getNeighbors(vertice)) ? new HashSet<>(graph1.getNeighbors(vertice)) : new HashSet<>();
+        Set<String> currentNeighbors = Objects.nonNull(graph1.getSuccessors(vertice)) ? new HashSet<>(graph1.getSuccessors(vertice)) : new HashSet<>();
 
         graph1.getVertices().forEach(possibleNeighbor -> {
-           if (graph2.getVertices().contains(possibleNeighbor)  //el posible vecino tiene que existir en la proxima version
-                   && !currentNeighbors.contains(possibleNeighbor) // no debe ser ya vecino
-                   && !vertice.equals(possibleNeighbor)) { // no debe ser si mismo
-                    float value = similarity.score(graph1, vertice, possibleNeighbor);
-                    if (value > 0) {
-                        Dependency dependency = new Dependency(vertice, possibleNeighbor, value);
-                        dependenciesList.add(dependency);
-                    }
+            if (graph2.getVertices().contains(possibleNeighbor)  //el posible vecino tiene que existir en la proxima version
+                    && !currentNeighbors.contains(possibleNeighbor) // no debe ser ya vecino
+                    && !vertice.equals(possibleNeighbor)) { // no debe ser si mismo
+                float value = similarity.score(graph1, vertice, possibleNeighbor);
+                log.info("{}: Score for {} -> {}: {}", similarity.getName(), vertice, possibleNeighbor, value);
+                if (value > 0) {
+                    Dependency dependency = new Dependency(vertice, possibleNeighbor, value);
+                    dependenciesList.add(dependency);
                 }
-            });
+            }
+        });
 
         return dependenciesList;
     }

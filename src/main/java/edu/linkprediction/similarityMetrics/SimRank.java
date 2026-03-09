@@ -6,6 +6,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import edu.linkprediction.threshold.Threshold;
 import edu.uci.ics.jung.graph.Graph;
 
 public class SimRank extends Similarity {
@@ -29,10 +30,12 @@ public class SimRank extends Similarity {
 	double[][] similarityMatrix;
 	Map<String, Integer> mappingClases;
 
-	public SimRank(Graph<String, Integer> graph) {
+	public SimRank(Graph<String, Integer> graph, List<Threshold> thresholdList) {
 		gamma = 0.6f; // 0.6 sugerencia papers
 		mappingClases = new HashMap<String, Integer>();
 		similarityMatrix = computeSimilarities(graph);
+        super.name = "SimRank";
+        super.thresholdList = thresholdList;
 	}
 
 	private double[][] computeSimilarities(Graph<String, Integer> graph) {

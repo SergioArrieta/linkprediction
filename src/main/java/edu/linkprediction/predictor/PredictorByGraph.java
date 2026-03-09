@@ -25,7 +25,7 @@ public class PredictorByGraph extends Predictor {
     private List<Dependency> generateDependeciesWithScoreByGraph(Graph<String, Integer> graph1, Graph<String, Integer> graph2, Similarity sim) {
         List<Dependency> newDependencies = new ArrayList<>();
         graph1.getVertices().forEach(node -> {
-            if (graph2.containsVertex(node)){
+            if (graph2.containsVertex(node)) {
                 newDependencies.addAll(calculateScoreByNode(graph1,graph2,node,sim));
             }
         });

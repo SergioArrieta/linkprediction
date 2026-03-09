@@ -28,7 +28,6 @@ public class MicroAvgValidator {
         df.setRoundingMode(RoundingMode.DOWN);
 
         List<Dependency> predecibles = Utils.getListaDependenciasPredecibles(original, nextVersion);
-
         AtomicInteger aciertos = new AtomicInteger();
         AtomicInteger fallos = new AtomicInteger();
         aciertos.set(0);

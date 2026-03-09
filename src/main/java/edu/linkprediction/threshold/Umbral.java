@@ -11,7 +11,7 @@ public class Umbral extends Threshold{
 
     public Umbral(Double scoreMin) {
         this.scoreMin = scoreMin;
-        super.name = "Umbral " + scoreMin;
+        super.name = "Umbral de " + scoreMin;
     }
 
     @Override

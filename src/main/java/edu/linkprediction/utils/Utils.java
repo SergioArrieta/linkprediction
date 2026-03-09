@@ -196,7 +196,7 @@ public final class Utils {
     }
 
     public static String[] getRow(String[] stats, String similarityName, String thresholdName) {
-        return new String[]{similarityName + " - " + thresholdName,
+        return new String[]{similarityName, thresholdName,
                 stats[0].replace(".", ","),
                 stats[1].replace(".", ",")};
     }

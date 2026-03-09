@@ -10,6 +10,7 @@ import edu.linkprediction.parser.Dependency;
 public abstract class Threshold {
 
     protected String name;
+
 	public abstract List<Dependency> getListFromThreshold(List<Dependency> list);
 
 }
