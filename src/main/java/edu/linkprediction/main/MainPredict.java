@@ -9,7 +9,6 @@ import com.filekeys.util.csv.CsvUtil;
 import edu.linkprediction.parser.*;
 import edu.linkprediction.parser.forpackage.ParserPackage;
 import edu.linkprediction.predictor.Predictor;
-import edu.linkprediction.predictor.PredictorByGraph;
 import edu.linkprediction.predictor.PredictorByNode;
 import edu.linkprediction.ranking.Ranking;
 import edu.linkprediction.ranking.RankingIndividual;
@@ -20,19 +19,18 @@ import lombok.extern.slf4j.Slf4j;
 import org.jdom2.JDOMException;
 
 @Slf4j
-public class Main {
+public class MainPredict {
 
     public static void main(String[] args) throws Exception {
-        //showGraph();
-        // predictByPackage();
-        predictByClasses();
+         predictByPackage();
+        //predictByClasses();
     }
 
     private static void predictByPackage() throws Exception {
-        ParserPackage parserCurrent = new ParserPackage("src/main/resources/sistemas/MobileMedia-odem/mobilemedia6.odem");
+        ParserPackage parserCurrent = new ParserPackage("src/main/resources/sistemas/MobileMedia-odem/mobilemedia5.odem");
         Graph<String, Integer> graphV1 = parserCurrent.getGraph();
 
-        ParserPackage parserNext = new ParserPackage("src/main/resources/sistemas/MobileMedia-odem/mobilemedia7.odem");
+        ParserPackage parserNext = new ParserPackage("src/main/resources/sistemas/MobileMedia-odem/mobilemedia6.odem");
         Graph<String, Integer> graphV2 = parserNext.getGraph();
 
         List<Similarity> similarities = new ArrayList<>();
@@ -97,17 +95,6 @@ public class Main {
                 predictor.generateFullPrediction(graphV1,graphV2,similarities,ranking),
                 CsvUtil.DEFAULT_HEADERS,
                 "src/main/resources/sistemas/MobileMedia-odem/result.csv");
-    }
-
-    private static void showGraph () throws IOException, JDOMException {
-        XmlParser odem = new OdemParser();
-
-        ParserJung parserJ = new ParserJung("src/main/resources/sistemas/subscriberDB-odem/sdb1.odem", odem);
-        Graph<String, Integer> graphV1 = (Graph<String, Integer>) parserJ.getGraph();
-        parserJ.showUP();
-
-        Parser parserG = new ParserGephi("src/main/resources/sistemas/MobileMedia-odem/mobilemedia2.odem", odem);
-        parserG.showGraph();
     }
 
 }
