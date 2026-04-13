@@ -15,7 +15,7 @@ import java.util.*;
 
 @Slf4j
 public class PredictorRankAggregation { //Esto deberia extender de los otros predictor
-    
+
     /**
      * Genera todas las dependencias posibles tieniendo en cuenta si existen en la version siguiente. Es decir, solo
      * genera dependencias que pueden ser predichas.

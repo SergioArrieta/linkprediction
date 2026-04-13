@@ -9,6 +9,7 @@ import com.filekeys.util.csv.CsvUtil;
 import edu.linkprediction.parser.*;
 import edu.linkprediction.parser.forpackage.ParserPackage;
 import edu.linkprediction.predictor.Predictor;
+import edu.linkprediction.predictor.PredictorByGraph;
 import edu.linkprediction.predictor.PredictorByNode;
 import edu.linkprediction.ranking.Ranking;
 import edu.linkprediction.ranking.RankingIndividual;
@@ -22,15 +23,16 @@ import org.jdom2.JDOMException;
 public class MainPredict {
 
     public static void main(String[] args) throws Exception {
-         predictByPackage();
+       //  predictByPackage();
         //predictByClasses();
+        predecibles();
     }
 
     private static void predictByPackage() throws Exception {
         ParserPackage parserCurrent = new ParserPackage("src/main/resources/sistemas/MobileMedia-odem/mobilemedia5.odem");
         Graph<String, Integer> graphV1 = parserCurrent.getGraph();
 
-        ParserPackage parserNext = new ParserPackage("src/main/resources/sistemas/MobileMedia-odem/mobilemedia6.odem");
+        ParserPackage parserNext = new ParserPackage("src/main/resources/sistemas/MobileMedia-odem/mobilemedia7.odem");
         Graph<String, Integer> graphV2 = parserNext.getGraph();
 
         List<Similarity> similarities = new ArrayList<>();
@@ -48,18 +50,18 @@ public class MainPredict {
 
         Ranking ranking = new RankingIndividual();
 
-        // Predictor predictor = new PredictorByGraph();
+        //Predictor predictor = new PredictorByGraph();
         Predictor predictor = new PredictorByNode();
 
         CsvUtil.write(
                 predictor.generateFullPrediction(graphV1,graphV2,similarities,ranking),
                 CsvUtil.DEFAULT_HEADERS,
-                "src/main/resources/sistemas/MobileMedia-odem/result.csv");
+                "target/MobileMedia_result.csv");
     }
 
     private static void predictByClasses() throws IOException, JDOMException {
         XmlParser odem = new OdemParser();
-        Parser parserCurrent = new ParserJung("src/main/resources/sistemas/MobileMedia-odem/mobilemedia6.odem", odem);
+        Parser parserCurrent = new ParserJung("src/main/resources/sistemas/MobileMedia-odem/mobilemedia5.odem", odem);
         Graph<String, Integer> graphV1 = (Graph<String, Integer>) parserCurrent.getGraph();
 
         Parser parserNext = new ParserJung("src/main/resources/sistemas/MobileMedia-odem/mobilemedia7.odem", odem);
@@ -94,7 +96,31 @@ public class MainPredict {
         CsvUtil.write(
                 predictor.generateFullPrediction(graphV1,graphV2,similarities,ranking),
                 CsvUtil.DEFAULT_HEADERS,
-                "src/main/resources/sistemas/MobileMedia-odem/result.csv");
+                "target/MobileMedia-odem/result.csv");
+    }
+
+    private static void predecibles() throws IOException, JDOMException {
+        XmlParser odem = new OdemParser();
+
+       // ParserPackage parserCurrent = new ParserPackage("src/main/resources/sistemas/MobileMedia-odem/mobilemedia5.odem");
+     //   Graph<String, Integer> graphV1 = parserCurrent.getGraph();
+
+        Parser parserCurrent = new ParserJung("src/main/resources/sistemas/MobileMedia-odem/mobilemedia5.odem", odem);
+        Graph<String, Integer> graphV1 = (Graph<String, Integer>) parserCurrent.getGraph();
+
+
+      //  ParserPackage parserNext = new ParserPackage("src/main/resources/sistemas/MobileMedia-odem/mobilemedia6.odem");
+       // Graph<String, Integer> graphV2 = parserNext.getGraph();
+
+        Parser parserNext = new ParserJung("src/main/resources/sistemas/MobileMedia-odem/mobilemedia6.odem", odem);
+        Graph<String, Integer> graphV2 = (Graph<String, Integer>) parserNext.getGraph();
+
+
+        Utils.getDependenciasPredecibles(graphV1,graphV2).forEach((s, dependencies) ->{
+            dependencies.forEach(dependency -> {
+                log.info(dependency.toString());
+            });
+        });
     }
 
 }

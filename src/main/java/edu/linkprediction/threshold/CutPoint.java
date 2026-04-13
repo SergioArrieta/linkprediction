@@ -19,8 +19,8 @@ public class CutPoint extends Threshold {
 	 * ES MAYOR A CUTPOINT ENTONCES LA DIFERENCIA ENTRE EL SCORE DE ESAS 2 ARISTAS
 	 * ES MUY GRANDE POR LO QUE LAS ARISTAS QUE SIGUEN YA NO IMPORTAN
 	 */
-	@Override
-	public List<Dependency> getListFromThreshold(List<Dependency> list) {
+	//@Override
+	public List<Dependency> getListFromThreshold2(List<Dependency> list) {
 		List<Dependency> filteredDependencies = new ArrayList<>();
 		if (!list.isEmpty()) {
 			// SI LLEGARA A PASAR QUE EXISTA UN NODO QUE ES VECINO DE TODOS NO HABRIA CON
@@ -38,4 +38,26 @@ public class CutPoint extends Threshold {
 		}
 		return filteredDependencies;
 	}
+
+    @Override
+    public List<Dependency> getListFromThreshold(List<Dependency> list) {
+        List<Dependency> filteredDependencies = new ArrayList<>();
+        if (!list.isEmpty()) {
+            double firstScore = list.get(0).getScore();
+            // El cutpoint se basa en el mejor score, pero se mantiene fijo para toda la lista
+            double tolerance = firstScore * percent;
+
+            filteredDependencies.add(list.get(0));
+
+            for (int i = 1; i < list.size(); i++) {
+                double difference = list.get(i-1).getScore() - list.get(i).getScore();
+
+                if (difference > tolerance) {
+                    break; // El "salto" es demasiado grande, dejamos de agregar
+                }
+                filteredDependencies.add(list.get(i));
+            }
+        }
+        return filteredDependencies;
+    }
 }
