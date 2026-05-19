@@ -1,16 +1,15 @@
 package edu.linkprediction.main;
 
-import com.filekeys.util.csv.CsvUtil;
+import edu.linkprediction.parser.Dependency;
 import edu.linkprediction.parser.forpackage.ParserPackage;
 import edu.linkprediction.predictor.Predictor;
-import edu.linkprediction.predictor.PredictorByGraph;
-import edu.linkprediction.ranking.Ranking;
-import edu.linkprediction.ranking.RankingIndividual;
+import edu.linkprediction.predictor.Validator;
 import edu.linkprediction.similarityMetrics.*;
 import edu.linkprediction.utils.Utils;
 import edu.uci.ics.jung.graph.Graph;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 public class MainCombinationMetric {
@@ -34,14 +33,11 @@ public class MainCombinationMetric {
                 0.5,
                 0.5));
 
-        Ranking ranking = new RankingIndividual();
+        Predictor predictor = new Predictor();
 
-        Predictor predictor = new PredictorByGraph();
-        //Predictor predictor = new PredictorByNode();
+        HashMap<String, HashMap<String, List<Dependency>>> resultados = predictor.getResults(similarities,graphV1,graphV2);
+        List<Dependency> dependenciasAPredecir = Utils.getRealDependencies(graphV1,graphV2);
+        Validator.writeResults(resultados,dependenciasAPredecir,"target/test_result_combination.csv");
 
-        CsvUtil.write(
-                predictor.generateFullPrediction(graphV1,graphV2,similarities,ranking),
-                CsvUtil.DEFAULT_HEADERS,
-                "src/main/resources/sistemas/subscriberDB-odem/result.csv");
     }
 }

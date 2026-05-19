@@ -14,7 +14,7 @@ import org.jdom2.Element;
 import org.jdom2.JDOMException;
 import org.jdom2.input.SAXBuilder;
 
-public class OdemParser extends XmlParser{
+public class OdemParser extends XmlParser {
 
 	Map<String, String> containerAttributes;
 	
@@ -91,7 +91,7 @@ public class OdemParser extends XmlParser{
 			}
 		}
 		
-		 inRelations.keySet().retainAll(clases); //todas las que está eliminando son de afuera...
+		 inRelations.keySet().retainAll(clases); //todas las que estï¿½ eliminando son de afuera...
 	        for(String c:clases){
 	            outRelations.get(c).keySet().retainAll(clases);
 	            Map<String,Float> i = inRelations.get(c);

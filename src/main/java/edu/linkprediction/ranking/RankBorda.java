@@ -17,11 +17,6 @@ public class RankBorda extends RankAggregation {
 
     @Override
     public List<Dependency> rank(List<Dependency> d1, List<Dependency> d2) {
-        log.info("Rank 1");
-        d1.forEach(dependency -> log.info("Dependencia {} {}", dependency.toString(), dependency.getScore()));
-        log.info("Rank 2");
-        d2.forEach(dependency -> log.info("Dependencia {} {}", dependency.toString(), dependency.getScore()));
-
         // combinar las listas en un solo dtream de entradas de mapa (dependency -> score)
         return Stream.concat(getBordaStream(d1), getBordaStream(d2))
                 .collect(Collectors.toMap(Map.Entry::getKey,Map.Entry::getValue,Double::sum)) // agrupar por dependency y sumamos los scores

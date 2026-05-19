@@ -4,7 +4,7 @@ public abstract class Parser {
 
 	protected Object graphContainer;
 
-	public abstract void createdGraph();
+	public abstract void createGraph();
 	
 	public abstract void showGraph();
 

@@ -81,14 +81,14 @@ public class ParserGephi extends Parser {
 		// Get a graph model - it exists because we have a workspace
 		graphModel = graphController.getGraphModel(workspace);
 		
-		createdGraph();
+		createGraph();
 		
 		hierarchy_levels = new HashMap<String, Integer>();
 		
 	}
 
 	@Override
-	public void createdGraph() {
+	public void createGraph() {
 		System.out.println("Creating gephi graph... " + new Date());
 
 		org.gephi.graph.api.Graph g = graphModel.getDirectedGraph();

@@ -66,14 +66,11 @@ public class SimRank extends Similarity {
 					double score = 0;
 
 					for (String it1 : map1) {
-
 						for (String it2 : map2) {
-
 							if (it1.equals(it2))
 								score += 1;
 							else
 								score += scores[mappingClases.get(it1)][mappingClases.get(it2)];
-
 						}
 					}
 

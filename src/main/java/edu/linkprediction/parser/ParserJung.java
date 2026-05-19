@@ -22,7 +22,6 @@ import edu.uci.ics.jung.algorithms.layout.Layout;
 import edu.uci.ics.jung.graph.DirectedSparseGraph;
 import edu.uci.ics.jung.graph.Graph;
 import edu.uci.ics.jung.visualization.BasicVisualizationServer;
-import edu.uci.ics.jung.visualization.decorators.ToStringLabeller;
 import edu.uci.ics.jung.visualization.renderers.Renderer.VertexLabel.Position;
 
 public class ParserJung extends Parser {
@@ -50,11 +49,11 @@ public class ParserJung extends Parser {
 
 		xml.parseArchive(path);
 
-		createdGraph();
+		createGraph();
 	}
 
 	@Override
-	public void createdGraph() {
+	public void createGraph() {
 
 		System.out.println("Starts building jung graph... " + new Date());
 		int numberEdge = 0;

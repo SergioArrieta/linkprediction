@@ -7,13 +7,15 @@ import java.util.Objects;
 import edu.linkprediction.threshold.Threshold;
 import edu.linkprediction.utils.MetricsReader;
 import edu.uci.ics.jung.graph.Graph;
+import lombok.extern.slf4j.Slf4j;
 
+@Slf4j
 public class SimilaritiesFromCSV extends Similarity {
 
     private final MetricsReader reader;
 
     public SimilaritiesFromCSV(List<Threshold> thresholdList, String path) throws IOException {
-        super.name = "SimilaritiesFromCSV: ";
+        super.name = "SimilaritiesFromCSV";
         super.thresholdList = thresholdList;
         reader = new MetricsReader(path);
     }
@@ -24,7 +26,6 @@ public class SimilaritiesFromCSV extends Similarity {
     //Calcular la norma del vector
         if (Objects.nonNull(s) && s.length > 2) {
             float sumaCuadrados = 0;
-
             for (int i = 2; i < s.length; i++) {
                 try {
                     float valor = Float.parseFloat(s[i]);

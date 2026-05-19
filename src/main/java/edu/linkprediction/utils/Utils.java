@@ -15,7 +15,7 @@ import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
 public final class Utils {
-	
+
 	/**
 	 * convierte un grafo en una lista de dependencias
 	 * @param graph
@@ -105,26 +105,7 @@ public final class Utils {
 
 		return graph;
 	}
-	
-	/**
-	 * conviernte una lista de dependencias de un nodo en un grafo
-	 * @param neighbours
-	 * @param node
-	 * @return
-	 */
-	@SuppressWarnings({ "rawtypes", "unchecked" })
-	public static Graph<String, Integer> fromListNeighboursToGraph(List<Dependency> neighbours, String node) {
-		Graph<String, Integer> graphR = new DirectedSparseGraph<>();
-		graphR.addVertex(node);
 
-		neighbours.forEach(n -> {
-			graphR.addVertex(n.getNodoB());
-			graphR.addEdge(graphR.getEdgeCount() + 1, node, n.getNodoB());
-		});
-
-		return graphR;
-	}
-	
 	/**
 	 * elimina los nodos y sus aristas que existen en la siguiente version pero no en la actual.
      * Es decir elimina el nodo que aparecen en versiones posteriores para no ensuciar la prediccion.
@@ -161,7 +142,6 @@ public final class Utils {
      * Devuelve un Hashmap con todas las dependencias predecibles por nodo. La key es el nodo.
      * Se calcula removiendo de la lista de dependencias de la proxima version, las dependencias ya existentes.
      * Una dependencia es no predicible si uno de sus 2 nodos no existe en la proxima version.
-     * USADO EN MACROAVG
      **/
 	public static HashMap<String, List<Dependency>> getDependenciasPredecibles(Graph<String, Integer> actualVersion, Graph<String, Integer> nextVersion) {
 
@@ -181,8 +161,17 @@ public final class Utils {
         return hashPredecibles;
 	}
 
+    public static List<Dependency> getRealDependencies (Graph<String, Integer> actualVersion, Graph<String, Integer> nextVersion){
+        final Collection<String> nodosActuales = actualVersion.getVertices();
+        final List<Dependency> originales = Utils.getDependiciesFromGraph(actualVersion);
+
+        List<Dependency> nextTodas = Utils.getDependiciesFromGraph(nextVersion);
+        return nextTodas.stream()
+                .filter(d -> nodosActuales.contains(d.getNodoA()) && nodosActuales.contains(d.getNodoB()))
+                .filter(d -> !originales.contains(d))
+                .collect(Collectors.toList());
+    }
     /**
-     * USADO EN MICROAVG
      * @param actualVersion
      * @param nextVersion
      * @return
